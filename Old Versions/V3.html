@@ -1,900 +1,1977 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adi Fine Arts — Learn to Paint Your World</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adi Fine Arts — Learn to Paint Your World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  :root {
-    --cream: #F5F0E8;
-    --navy: #1E2D5A;
-    --gold: #C9A84C;
-    --sage: #8A9E8C;
-    --charcoal: #3D3529;
-    --muted: #7A6E5F;
-    --light-sage: #EAF0EA;
-  }
+    :root {
+      --cream: #F5F0E8;
+      --navy: #1E2D5A;
+      --gold: #C9A84C;
+      --sage: #8A9E8C;
+      --charcoal: #3D3529;
+      --muted: #7A6E5F;
+      --light-sage: #EAF0EA;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    font-family: 'Lato', sans-serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 48px;
-    background: rgba(245,240,232,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(201,168,76,0.25);
-    transition: box-shadow .3s;
-  }
-  nav.scrolled { box-shadow: 0 4px 24px rgba(30,45,90,0.1); }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem; font-weight: 900;
-    color: var(--navy); letter-spacing: .5px;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a {
-    font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-    color: var(--navy); transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-brochure {
-    border: 1.5px solid var(--gold) !important;
-    color: var(--gold) !important;
-    padding: 8px 16px; border-radius: 2px;
-    transition: background .2s, color .2s !important;
-  }
-  .nav-brochure:hover { background: var(--gold) !important; color: var(--navy) !important; }
-  .nav-cta {
-    background: var(--navy); color: var(--cream) !important;
-    padding: 10px 22px; border-radius: 2px;
-    transition: background .2s !important;
-  }
-  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      transition: box-shadow .3s;
+    }
 
-  /* ── FLOATING BROCHURE FAB ── */
-  #brochure-fab {
-    position: fixed; right: 24px; bottom: 36px; z-index: 200;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    background: var(--navy); color: var(--cream);
-    width: 76px; height: 76px; border-radius: 50%;
-    text-decoration: none; text-align: center;
-    box-shadow: 0 6px 24px rgba(30,45,90,.35);
-    border: 2.5px solid var(--gold);
-    transition: transform .25s, box-shadow .25s, background .2s, color .2s;
-  }
-  #brochure-fab:hover {
-    transform: translateY(-5px) scale(1.08);
-    box-shadow: 0 14px 36px rgba(201,168,76,.45);
-    background: var(--gold); color: var(--navy);
-  }
-  .fab-icon { font-size: 1.5rem; line-height: 1; display: block; }
-  .fab-label { font-size: .5rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; line-height: 1.4; margin-top: 4px; }
+    nav.scrolled {
+      box-shadow: 0 4px 24px rgba(30, 45, 90, 0.1);
+    }
 
-  /* ── HERO ── */
-  #hero {
-    position: relative; min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: .5px;
+    }
 
-  /* Parallax background */
-  .hero-bg {
-    position: absolute; inset: -40px;
-    background:
-      url('images/landing.jpg') center/cover no-repeat;
-    animation: heroBgDrift 18s ease-in-out infinite alternate;
-    will-change: transform;
-  }
+    .nav-logo span {
+      color: var(--gold);
+    }
 
-  /* Layered gradient overlays */
-  .hero-bg::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(
-      160deg,
-      rgba(30,45,90,0.55) 0%,
-      rgba(20,30,60,0.30) 50%,
-      rgba(61,53,41,0.50) 100%
-    );
-  }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
 
-  /* Animated vignette pulse */
-  .hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(10,16,40,0.65) 100%);
-    animation: vignettePulse 6s ease-in-out infinite alternate;
-  }
+    .nav-links a {
+      font-family: 'Lato', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--navy);
+      transition: color .2s;
+    }
 
-  /* Floating paint-splash particles */
-  .hero-particles {
-    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  }
-  .particle {
-    position: absolute; border-radius: 50%;
-    background: var(--gold); opacity: 0;
-    animation: particleFloat linear infinite;
-  }
-  .particle:nth-child(1)  { width:6px;  height:6px;  left:8%;  animation-duration:9s;  animation-delay:0s;   }
-  .particle:nth-child(2)  { width:4px;  height:4px;  left:18%; animation-duration:13s; animation-delay:1.5s; background:#fff; }
-  .particle:nth-child(3)  { width:8px;  height:8px;  left:28%; animation-duration:10s; animation-delay:3s;   }
-  .particle:nth-child(4)  { width:3px;  height:3px;  left:42%; animation-duration:15s; animation-delay:.8s;  background:#fff; }
-  .particle:nth-child(5)  { width:7px;  height:7px;  left:55%; animation-duration:11s; animation-delay:2.2s; }
-  .particle:nth-child(6)  { width:5px;  height:5px;  left:65%; animation-duration:12s; animation-delay:4s;   background:#fff; }
-  .particle:nth-child(7)  { width:9px;  height:9px;  left:74%; animation-duration:8s;  animation-delay:1s;   }
-  .particle:nth-child(8)  { width:4px;  height:4px;  left:84%; animation-duration:14s; animation-delay:2.8s; background:#fff; }
-  .particle:nth-child(9)  { width:6px;  height:6px;  left:92%; animation-duration:10s; animation-delay:.4s;  }
-  .particle:nth-child(10) { width:3px;  height:3px;  left:35%; animation-duration:16s; animation-delay:5s;   background:#fff; }
-  .particle:nth-child(11) { width:5px;  height:5px;  left:50%; animation-duration:9s;  animation-delay:3.5s; }
-  .particle:nth-child(12) { width:7px;  height:7px;  left:12%; animation-duration:12s; animation-delay:6s;   background:#fff; }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
 
-  /* Animated horizontal light streak */
-  .hero-streak {
-    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(201,168,76,.06), transparent);
-    animation: streakSlide 8s ease-in-out 1.5s infinite;
-    pointer-events: none;
-  }
+    .nav-brochure {
+      border: 1.5px solid var(--gold) !important;
+      color: var(--gold) !important;
+      padding: 8px 16px;
+      border-radius: 2px;
+      transition: background .2s, color .2s !important;
+    }
 
-  /* Corner art-brush accents */
-  .hero-corner {
-    position: absolute; pointer-events: none;
-  }
-  .hero-corner-tl {
-    top: 32px; left: 32px;
-    width: 80px; height: 80px;
-    border-top: 2px solid rgba(201,168,76,.5);
-    border-left: 2px solid rgba(201,168,76,.5);
-    animation: cornerGrow .8s 1.8s both;
-    transform-origin: top left;
-  }
-  .hero-corner-br {
-    bottom: 32px; right: 32px;
-    width: 80px; height: 80px;
-    border-bottom: 2px solid rgba(201,168,76,.5);
-    border-right: 2px solid rgba(201,168,76,.5);
-    animation: cornerGrow .8s 2s both;
-    transform-origin: bottom right;
-  }
+    .nav-brochure:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
 
-  /* Content wrapper */
-  .hero-content {
-    position: relative; text-align: center; padding: 0 24px; max-width: 880px;
-    z-index: 2;
-  }
+    .nav-cta {
+      background: var(--navy);
+      color: var(--cream) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background .2s !important;
+    }
 
-  /* Eyebrow — script line */
-  .hero-eyebrow {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.6rem; color: var(--gold);
-    display: block; margin-bottom: 16px;
-    opacity: 0;
-    animation: slideInDown .9s cubic-bezier(.22,1,.36,1) .4s forwards;
-    text-shadow: 0 2px 12px rgba(201,168,76,.4);
-  }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
 
-  /* Main title — LETTER-BY-LETTER */
-  .hero-title-wrap {
-    overflow: hidden; margin-bottom: 0;
-  }
-  .hero-title-main {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 9vw, 7.5rem);
-    font-weight: 900; line-height: .95;
-    color: var(--navy);
-    text-transform: uppercase; letter-spacing: -2px;
-    display: block;
-    opacity: 0;
-    animation: titleReveal 1s cubic-bezier(.22,1,.36,1) .7s forwards;
-    text-shadow:
-      2px 2px 0 rgba(255,255,255,.15),
-      0 4px 32px rgba(255,255,255,.1);
-  }
+    /* ── FLOATING BROCHURE FAB ── */
+    #brochure-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 36px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: var(--cream);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(30, 45, 90, .35);
+      border: 2.5px solid var(--gold);
+      transition: transform .25s, box-shadow .25s, background .2s, color .2s;
+    }
 
-  /* Animated underline stroke beneath main title */
-  .hero-title-underline {
-    display: block; position: relative; margin: 0 auto 4px;
-    height: 6px; width: 0;
-    background: linear-gradient(90deg, var(--gold), #e8c96a, var(--gold));
-    border-radius: 3px;
-    animation: underlineGrow .9s cubic-bezier(.22,1,.36,1) 1.5s forwards;
-    box-shadow: 0 0 18px rgba(201,168,76,.6);
-  }
+    #brochure-fab:hover {
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: 0 14px 36px rgba(201, 168, 76, .45);
+      background: var(--gold);
+      color: var(--navy);
+    }
 
-  /* Italic subtitle */
-  .hero-title-em {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    font-weight: 600; color: #fff;
-    display: block; margin-top: 10px; letter-spacing: 1px;
-    opacity: 0;
-    animation: fadeUp .9s cubic-bezier(.22,1,.36,1) 1.2s forwards;
-    text-shadow: 0 2px 16px rgba(0,0,0,.4);
-  }
+    .fab-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      display: block;
+    }
 
-  /* Divider brush stroke */
-  .brush-line {
-    width: 0; height: 5px; margin: 22px auto;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    border-radius: 3px;
-    animation: brushExpand 1s cubic-bezier(.22,1,.36,1) 1.6s forwards;
-    box-shadow: 0 0 14px rgba(201,168,76,.5);
-  }
+    .fab-label {
+      font-size: .5rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
 
-  /* Subtext badges row */
-  .hero-badges {
-    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-    margin-bottom: 32px;
-    opacity: 0; animation: fadeUp .8s 1.8s forwards;
-  }
-  .hero-badge {
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.3);
-    color: #fff; font-size: .78rem; font-weight: 700;
-    letter-spacing: 1.2px; text-transform: uppercase;
-    padding: 7px 18px; border-radius: 24px;
-    backdrop-filter: blur(6px);
-    transition: background .3s, border-color .3s;
-  }
-  .hero-badge:hover { background: rgba(201,168,76,.25); border-color: var(--gold); }
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-  /* Sub line */
-  .hero-sub {
-    font-size: 1rem; color: rgba(255,255,255,.80);
-    font-weight: 300; letter-spacing: .5px; margin-bottom: 36px;
-    opacity: 0; animation: fadeUp .8s 1.9s forwards;
-    display: none; /* replaced by badges */
-  }
+    /* Parallax background */
+    .hero-bg {
+      position: absolute;
+      inset: -40px;
+      background:
+        url('images/landing.jpg') center/cover no-repeat;
+      animation: heroBgDrift 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
 
-  /* Buttons */
-  .hero-btns {
-    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-    opacity: 0; animation: fadeUp .8s 2.1s forwards;
-  }
-  .btn-primary {
-    background: var(--gold); color: var(--navy);
-    padding: 15px 36px; font-family: 'Lato', sans-serif;
-    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    font-size: .85rem; text-decoration: none; border-radius: 2px;
-    position: relative; overflow: hidden;
-    transition: transform .2s, box-shadow .2s; display: inline-block;
-  }
-  .btn-primary::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
-    transform: translateX(-100%);
-    transition: transform .5s;
-  }
-  .btn-primary:hover::after { transform: translateX(100%); }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(201,168,76,.5); }
+    /* Layered gradient overlays */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+          rgba(30, 45, 90, 0.55) 0%,
+          rgba(20, 30, 60, 0.30) 50%,
+          rgba(61, 53, 41, 0.50) 100%);
+    }
 
-  .btn-outline {
-    border: 2px solid rgba(255,255,255,.7); color: #fff;
-    padding: 13px 32px; font-family: 'Lato', sans-serif;
-    font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-    font-size: .85rem; text-decoration: none; border-radius: 2px;
-    position: relative; overflow: hidden;
-    transition: border-color .25s, background .25s, transform .2s; display: inline-block;
-  }
-  .btn-outline:hover {
-    border-color: var(--gold); background: rgba(201,168,76,.15);
-    transform: translateY(-3px);
-  }
+    /* Animated vignette pulse */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 16, 40, 0.65) 100%);
+      animation: vignettePulse 6s ease-in-out infinite alternate;
+    }
 
-  /* Scroll indicator */
-  .hero-scroll {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: rgba(255,255,255,.55); font-size: .68rem; letter-spacing: 3px;
-    text-transform: uppercase; z-index: 2;
-    opacity: 0; animation: fadeIn 1s 3s forwards;
-  }
-  .scroll-mouse {
-    width: 22px; height: 34px;
-    border: 2px solid rgba(255,255,255,.4); border-radius: 12px;
-    position: relative; margin-bottom: 2px;
-  }
-  .scroll-mouse::after {
-    content: '';
-    position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
-    width: 3px; height: 7px;
-    background: rgba(255,255,255,.6); border-radius: 2px;
-    animation: scrollDot 1.8s ease-in-out infinite;
-  }
+    /* Floating paint-splash particles */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
 
-  /* ── HERO ANIMATIONS ── */
-  @keyframes heroBgDrift {
-    0%   { transform: scale(1.08) translate(0, 0); }
-    50%  { transform: scale(1.12) translate(-1%, 1%); }
-    100% { transform: scale(1.08) translate(1%, -0.5%); }
-  }
-  @keyframes vignettePulse {
-    0%   { opacity: .8; }
-    100% { opacity: 1; }
-  }
-  @keyframes particleFloat {
-    0%   { bottom: -10px; opacity: 0; transform: translateX(0) scale(1); }
-    10%  { opacity: .7; }
-    80%  { opacity: .4; }
-    100% { bottom: 110vh; opacity: 0; transform: translateX(40px) scale(1.4); }
-  }
-  @keyframes streakSlide {
-    0%   { left: -100%; opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { left: 160%; opacity: 0; }
-  }
-  @keyframes cornerGrow {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-  @keyframes slideInDown {
-    from { opacity: 0; transform: translateY(-28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes titleReveal {
-    from { opacity: 0; transform: translateY(40px) skewY(2deg); }
-    to   { opacity: 1; transform: translateY(0) skewY(0deg); }
-  }
-  @keyframes underlineGrow {
-    from { width: 0; }
-    to   { width: 420px; }
-  }
-  @keyframes brushExpand {
-    from { width: 0; }
-    to   { width: 260px; }
-  }
-  @keyframes scrollDot {
-    0%,100% { top: 5px; opacity: .8; }
-    50%      { top: 14px; opacity: .2; }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: particleFloat linear infinite;
+    }
 
-  /* ── TAGLINE STRIP ── */
-  #tagline {
-    background: var(--navy); padding: 28px 48px;
-    display: flex; align-items: center; justify-content: center;
-    gap: 48px; flex-wrap: wrap;
-  }
-  .tag-item { text-align: center; color: var(--cream); }
-  .tag-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem; font-weight: 900; color: var(--gold);
-    display: block; line-height: 1;
-  }
-  .tag-label { font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; opacity: .7; }
-  .tag-sep { width: 1px; height: 48px; background: rgba(201,168,76,.3); }
+    .particle:nth-child(1) {
+      width: 6px;
+      height: 6px;
+      left: 8%;
+      animation-duration: 9s;
+      animation-delay: 0s;
+    }
 
-  /* ── ABOUT ── */
-  #about { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; align-items: stretch; }
-  .about-img { position: relative; overflow: hidden; min-height: 520px; }
-  .about-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9); transition: transform .6s; }
-  .about-img:hover img { transform: scale(1.03); }
-  .about-img-frame { position: absolute; inset: 24px; border: 2px solid var(--gold); pointer-events: none; opacity: .4; }
-  .about-text { background: var(--cream); padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
-  .section-eyebrow { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--gold); display: block; margin-bottom: 10px; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--navy); line-height: 1.15; margin-bottom: 24px; }
-  .section-body { font-size: 1rem; line-height: 1.8; color: var(--muted); margin-bottom: 20px; }
-  .about-badges { display: flex; gap: 12px; flex-wrap: wrap; margin: 28px 0; }
-  .badge { background: var(--light-sage); border: 1px solid var(--sage); color: var(--navy); padding: 6px 16px; border-radius: 20px; font-size: .8rem; font-weight: 700; letter-spacing: .5px; }
+    .particle:nth-child(2) {
+      width: 4px;
+      height: 4px;
+      left: 18%;
+      animation-duration: 13s;
+      animation-delay: 1.5s;
+      background: #fff;
+    }
 
-  /* ── CLASSES CAROUSEL ── */
-  #classes { background: var(--navy); padding: 90px 0 100px; text-align: center; overflow: hidden; }
-  #classes .classes-header { padding: 0 48px; margin-bottom: 56px; }
-  #classes .section-title { color: var(--cream); margin-bottom: 12px; }
-  #classes .section-eyebrow { color: var(--gold); }
-  #classes .section-sub { color: rgba(245,240,232,.6); max-width: 540px; margin: 0 auto; font-size: .95rem; line-height: 1.7; }
+    .particle:nth-child(3) {
+      width: 8px;
+      height: 8px;
+      left: 28%;
+      animation-duration: 10s;
+      animation-delay: 3s;
+    }
 
-  .carousel-wrapper { position: relative; width: 100%; }
-  .carousel-wrapper::before, .carousel-wrapper::after {
-    content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
-  }
-  .carousel-wrapper::before { left: 0; background: linear-gradient(to right, var(--navy) 0%, transparent 100%); }
-  .carousel-wrapper::after  { right: 0; background: linear-gradient(to left, var(--navy) 0%, transparent 100%); }
+    .particle:nth-child(4) {
+      width: 3px;
+      height: 3px;
+      left: 42%;
+      animation-duration: 15s;
+      animation-delay: .8s;
+      background: #fff;
+    }
 
-  .carousel-track {
-    display: flex; gap: 24px; width: max-content;
-    animation: carouselScroll 28s linear infinite;
-    cursor: grab; padding: 16px 0 28px;
-  }
-  .carousel-track:active { cursor: grabbing; }
-  .carousel-track.paused { animation-play-state: paused; }
+    .particle:nth-child(5) {
+      width: 7px;
+      height: 7px;
+      left: 55%;
+      animation-duration: 11s;
+      animation-delay: 2.2s;
+    }
 
-  @keyframes carouselScroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+    .particle:nth-child(6) {
+      width: 5px;
+      height: 5px;
+      left: 65%;
+      animation-duration: 12s;
+      animation-delay: 4s;
+      background: #fff;
+    }
 
-  .class-card {
-    flex: 0 0 300px; background: rgba(255,255,255,.04);
-    border: 1px solid rgba(201,168,76,.18); border-radius: 16px;
-    padding: 0; text-align: left; overflow: hidden; position: relative;
-    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .35s;
-    cursor: pointer;
-  }
-  .class-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--gold);
-    box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px var(--gold);
-  }
-  .class-card-stripe { height: 5px; width: 100%; }
-  .class-card-top { padding: 28px 28px 20px; display: flex; align-items: flex-start; justify-content: space-between; }
-  .class-icon-wrap {
-    width: 58px; height: 58px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.7rem; background: rgba(255,255,255,.07); flex-shrink: 0;
-  }
-  .class-number { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: rgba(255,255,255,.06); line-height: 1; }
-  .class-card-body { padding: 0 28px 28px; }
-  .class-mode { font-size: .65rem; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 5px; }
-  .class-mode-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .class-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 10px; line-height: 1.3; }
-  .class-desc { font-size: .83rem; line-height: 1.7; color: rgba(245,240,232,.5); margin-bottom: 20px; }
-  .class-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07); }
-  .class-tag { font-size: .68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 13px; border-radius: 20px; background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid rgba(201,168,76,.3); }
-  .class-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(201,168,76,.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: .9rem; transition: background .2s, border-color .2s, transform .2s; }
-  .class-card:hover .class-arrow { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: translateX(3px); }
+    .particle:nth-child(7) {
+      width: 9px;
+      height: 9px;
+      left: 74%;
+      animation-duration: 8s;
+      animation-delay: 1s;
+    }
 
-  .carousel-hint { margin-top: 32px; font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,.3); display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .carousel-hint::before, .carousel-hint::after { content: ''; width: 32px; height: 1px; background: rgba(245,240,232,.15); }
+    .particle:nth-child(8) {
+      width: 4px;
+      height: 4px;
+      left: 84%;
+      animation-duration: 14s;
+      animation-delay: 2.8s;
+      background: #fff;
+    }
 
-  .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 28px; }
-  .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,240,232,.2); cursor: pointer; transition: background .3s, transform .3s; }
-  .carousel-dot.active { background: var(--gold); transform: scale(1.4); }
+    .particle:nth-child(9) {
+      width: 6px;
+      height: 6px;
+      left: 92%;
+      animation-duration: 10s;
+      animation-delay: .4s;
+    }
 
-  @media (max-width: 600px) {
-    .class-card { flex: 0 0 260px; }
-    .carousel-wrapper::before, .carousel-wrapper::after { width: 40px; }
-    #classes .classes-header { padding: 0 24px; }
-  }
+    .particle:nth-child(10) {
+      width: 3px;
+      height: 3px;
+      left: 35%;
+      animation-duration: 16s;
+      animation-delay: 5s;
+      background: #fff;
+    }
 
-  /* ── GALLERY ── */
-  #gallery { padding: 100px 48px; background: #EDE8DF; }
-  #gallery .section-title { color: var(--navy); }
-  .gallery-header { text-align: center; margin-bottom: 52px; }
-  .masonry { columns: 4; column-gap: 16px; max-width: 1200px; margin: 0 auto; }
-  .masonry-item { break-inside: avoid; margin-bottom: 16px; position: relative; overflow: hidden; border-radius: 3px; cursor: pointer; }
-  .masonry-item img { width: 100%; display: block; transition: transform .5s, filter .4s; filter: saturate(.85); }
-  .masonry-item:hover img { transform: scale(1.05); filter: saturate(1.1); }
-  .masonry-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,45,90,.7) 0%, transparent 60%); opacity: 0; transition: opacity .35s; display: flex; align-items: flex-end; padding: 16px; }
-  .masonry-item:hover .masonry-item-overlay { opacity: 1; }
-  .masonry-item-label { color: #fff; font-family: 'Dancing Script', cursive; font-size: 1rem; }
+    .particle:nth-child(11) {
+      width: 5px;
+      height: 5px;
+      left: 50%;
+      animation-duration: 9s;
+      animation-delay: 3.5s;
+    }
 
-  /* ── MAP ── */
-  #presence { padding: 100px 48px; background: var(--cream); text-align: center; }
-  #presence .section-title { color: var(--navy); margin-bottom: 12px; }
-  #presence .section-sub { color: var(--muted); max-width: 520px; margin: 0 auto 52px; font-size: .95rem; line-height: 1.7; }
-  .map-container { max-width: 960px; margin: 0 auto; background: #0F1D3A; border-radius: 6px; box-shadow: 0 4px 40px rgba(30,45,90,.25), 0 0 0 1px rgba(201,168,76,.15); overflow: hidden; }
-  .map-legend { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 24px; }
-  .legend-item { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--muted); font-weight: 700; }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .particle:nth-child(12) {
+      width: 7px;
+      height: 7px;
+      left: 12%;
+      animation-duration: 12s;
+      animation-delay: 6s;
+      background: #fff;
+    }
 
-  /* ── REVIEWS ── */
-  #reviews { background: var(--navy); padding: 100px 48px; text-align: center; }
-  #reviews .section-eyebrow { color: var(--gold); }
-  #reviews .section-title { color: var(--cream); margin-bottom: 52px; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1080px; margin: 0 auto; }
-  .review-card { background: rgba(245,240,232,.06); border: 1px solid rgba(201,168,76,.15); border-radius: 4px; padding: 36px 32px; text-align: left; transition: border-color .3s; }
-  .review-card:hover { border-color: rgba(201,168,76,.5); }
-  .review-stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; }
-  .review-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: rgba(245,240,232,.85); line-height: 1.7; margin-bottom: 24px; }
-  .reviewer { display: flex; align-items: center; gap: 12px; }
-  .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-  .reviewer-name { font-weight: 700; color: var(--cream); font-size: .9rem; }
-  .reviewer-loc { font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .5px; }
+    /* Animated horizontal light streak */
+    .hero-streak {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, .06), transparent);
+      animation: streakSlide 8s ease-in-out 1.5s infinite;
+      pointer-events: none;
+    }
 
-  /* ── CTA ── */
-  #cta { background: var(--gold); padding: 80px 48px; text-align: center; }
-  #cta .section-title { color: var(--navy); margin-bottom: 16px; font-size: clamp(1.8rem, 4vw, 3rem); }
-  #cta p { color: rgba(30,45,90,.75); margin-bottom: 36px; font-size: 1.05rem; }
-  #cta .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-dark { background: var(--navy); color: var(--cream); padding: 16px 40px; border-radius: 2px; font-family: 'Lato', sans-serif; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: .88rem; text-decoration: none; display: inline-block; transition: transform .2s, box-shadow .2s; }
-  .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,45,90,.3); }
-  .btn-brochure-cta { background: transparent; border: 2px solid var(--navy); color: var(--navy); padding: 14px 38px; border-radius: 2px; font-family: 'Lato', sans-serif; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; font-size: .88rem; text-decoration: none; display: inline-block; transition: background .2s, color .2s; }
-  .btn-brochure-cta:hover { background: var(--navy); color: var(--cream); }
+    /* Corner art-brush accents */
+    .hero-corner {
+      position: absolute;
+      pointer-events: none;
+    }
 
-  /* ── FOOTER ── */
-  footer { background: var(--charcoal); padding: 60px 48px 32px; color: rgba(245,240,232,.6); }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
-  .footer-brand .nav-logo { font-size: 1.8rem; margin-bottom: 12px; display: block; }
-  .footer-tagline { font-size: .88rem; line-height: 1.6; max-width: 240px; }
-  .footer-col h4 { color: var(--gold); font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 8px; }
-  .footer-col a { color: rgba(245,240,232,.55); text-decoration: none; font-size: .88rem; transition: color .2s; }
-  .footer-col a:hover { color: var(--gold); }
-  .footer-contact { font-size: .88rem; line-height: 2; }
-  .footer-bottom { border-top: 1px solid rgba(245,240,232,.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: .78rem; flex-wrap: wrap; gap: 12px; }
+    .hero-corner-tl {
+      top: 32px;
+      left: 32px;
+      width: 80px;
+      height: 80px;
+      border-top: 2px solid rgba(201, 168, 76, .5);
+      border-left: 2px solid rgba(201, 168, 76, .5);
+      animation: cornerGrow .8s 1.8s both;
+      transform-origin: top left;
+    }
 
-  /* ── SHARED ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-  @keyframes expandLine { from { opacity:0; transform:scaleX(0); } to { opacity:1; transform:scaleX(1); } }
-  @keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(8px); } }
+    .hero-corner-br {
+      bottom: 32px;
+      right: 32px;
+      width: 80px;
+      height: 80px;
+      border-bottom: 2px solid rgba(201, 168, 76, .5);
+      border-right: 2px solid rgba(201, 168, 76, .5);
+      animation: cornerGrow .8s 2s both;
+      transform-origin: bottom right;
+    }
 
-  /* ── REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Content wrapper */
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 880px;
+      z-index: 2;
+    }
 
-  @media (max-width: 900px) {
-    nav { padding: 14px 24px; }
-    .nav-links { display: none; }
-    #about { grid-template-columns: 1fr; }
-    .about-text { padding: 48px 28px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .masonry { columns: 2; }
-    #brochure-fab { right: 16px; bottom: 20px; width: 64px; height: 64px; }
-  }
-</style>
+    /* Eyebrow — script line */
+    .hero-eyebrow {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: slideInDown .9s cubic-bezier(.22, 1, .36, 1) .4s forwards;
+      text-shadow: 0 2px 12px rgba(201, 168, 76, .4);
+    }
+
+    /* Main title — LETTER-BY-LETTER */
+    .hero-title-wrap {
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .hero-title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900;
+      line-height: .95;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      display: block;
+      opacity: 0;
+      animation: titleReveal 1s cubic-bezier(.22, 1, .36, 1) .7s forwards;
+      text-shadow:
+        2px 2px 0 rgba(255, 255, 255, .15),
+        0 4px 32px rgba(255, 255, 255, .1);
+    }
+
+    /* Animated underline stroke beneath main title */
+    .hero-title-underline {
+      display: block;
+      position: relative;
+      margin: 0 auto 4px;
+      height: 6px;
+      width: 0;
+      background: linear-gradient(90deg, var(--gold), #e8c96a, var(--gold));
+      border-radius: 3px;
+      animation: underlineGrow .9s cubic-bezier(.22, 1, .36, 1) 1.5s forwards;
+      box-shadow: 0 0 18px rgba(201, 168, 76, .6);
+    }
+
+    /* Italic subtitle */
+    .hero-title-em {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeUp .9s cubic-bezier(.22, 1, .36, 1) 1.2s forwards;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, .4);
+    }
+
+    /* Divider brush stroke */
+    .brush-line {
+      width: 0;
+      height: 5px;
+      margin: 22px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 3px;
+      animation: brushExpand 1s cubic-bezier(.22, 1, .36, 1) 1.6s forwards;
+      box-shadow: 0 0 14px rgba(201, 168, 76, .5);
+    }
+
+    /* Subtext badges row */
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .8s 1.8s forwards;
+    }
+
+    .hero-badge {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .3);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 24px;
+      backdrop-filter: blur(6px);
+      transition: background .3s, border-color .3s;
+    }
+
+    .hero-badge:hover {
+      background: rgba(201, 168, 76, .25);
+      border-color: var(--gold);
+    }
+
+    /* Sub line */
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, .80);
+      font-weight: 300;
+      letter-spacing: .5px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp .8s 1.9s forwards;
+      display: none;
+      /* replaced by badges */
+    }
+
+    /* Buttons */
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s 2.1s forwards;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 15px 36px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .85rem;
+      text-decoration: none;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-block;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
+      transform: translateX(-100%);
+      transition: transform .5s;
+    }
+
+    .btn-primary:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(201, 168, 76, .5);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255, 255, 255, .7);
+      color: #fff;
+      padding: 13px 32px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .85rem;
+      text-decoration: none;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, background .25s, transform .2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, .15);
+      transform: translateY(-3px);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, .55);
+      font-size: .68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s 3s forwards;
+    }
+
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 2px solid rgba(255, 255, 255, .4);
+      border-radius: 12px;
+      position: relative;
+      margin-bottom: 2px;
+    }
+
+    .scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 7px;
+      background: rgba(255, 255, 255, .6);
+      border-radius: 2px;
+      animation: scrollDot 1.8s ease-in-out infinite;
+    }
+
+    /* ── HERO ANIMATIONS ── */
+    @keyframes heroBgDrift {
+      0% {
+        transform: scale(1.08) translate(0, 0);
+      }
+
+      50% {
+        transform: scale(1.12) translate(-1%, 1%);
+      }
+
+      100% {
+        transform: scale(1.08) translate(1%, -0.5%);
+      }
+    }
+
+    @keyframes vignettePulse {
+      0% {
+        opacity: .8;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes particleFloat {
+      0% {
+        bottom: -10px;
+        opacity: 0;
+        transform: translateX(0) scale(1);
+      }
+
+      10% {
+        opacity: .7;
+      }
+
+      80% {
+        opacity: .4;
+      }
+
+      100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(40px) scale(1.4);
+      }
+    }
+
+    @keyframes streakSlide {
+      0% {
+        left: -100%;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 160%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes cornerGrow {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes titleReveal {
+      from {
+        opacity: 0;
+        transform: translateY(40px) skewY(2deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) skewY(0deg);
+      }
+    }
+
+    @keyframes underlineGrow {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 420px;
+      }
+    }
+
+    @keyframes brushExpand {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 260px;
+      }
+    }
+
+    @keyframes scrollDot {
+
+      0%,
+      100% {
+        top: 5px;
+        opacity: .8;
+      }
+
+      50% {
+        top: 14px;
+        opacity: .2;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ── TAGLINE STRIP ── */
+    #tagline {
+      background: var(--navy);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .tag-item {
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .tag-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .tag-label {
+      font-size: .75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .tag-sep {
+      width: 1px;
+      height: 48px;
+      background: rgba(201, 168, 76, .3);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      align-items: stretch;
+    }
+
+    .about-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.9);
+      transition: transform .6s;
+    }
+
+    .about-img:hover img {
+      transform: scale(1.03);
+    }
+
+    .about-img-frame {
+      position: absolute;
+      inset: 24px;
+      border: 2px solid var(--gold);
+      pointer-events: none;
+      opacity: .4;
+    }
+
+    .about-text {
+      background: var(--cream);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-eyebrow {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .about-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 28px 0;
+    }
+
+    .badge {
+      background: var(--light-sage);
+      border: 1px solid var(--sage);
+      color: var(--navy);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    /* ── CLASSES CAROUSEL ── */
+    #classes {
+      background: var(--navy);
+      padding: 90px 0 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #classes .classes-header {
+      padding: 0 48px;
+      margin-bottom: 56px;
+    }
+
+    #classes .section-title {
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    #classes .section-eyebrow {
+      color: var(--gold);
+    }
+
+    #classes .section-sub {
+      color: rgba(245, 240, 232, .6);
+      max-width: 540px;
+      margin: 0 auto;
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .carousel-wrapper::before,
+    .carousel-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .carousel-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+    }
+
+    .carousel-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: carouselScroll 28s linear infinite;
+      cursor: grab;
+      padding: 16px 0 28px;
+    }
+
+    .carousel-track:active {
+      cursor: grabbing;
+    }
+
+    .carousel-track.paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes carouselScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .class-card {
+      flex: 0 0 300px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 168, 76, .18);
+      border-radius: 16px;
+      padding: 0;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .3s, box-shadow .35s;
+      cursor: pointer;
+    }
+
+    .class-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--gold);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .4), 0 0 0 1px var(--gold);
+    }
+
+    .class-card-stripe {
+      height: 5px;
+      width: 100%;
+    }
+
+    .class-card-top {
+      padding: 28px 28px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .class-icon-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      background: rgba(255, 255, 255, .07);
+      flex-shrink: 0;
+    }
+
+    .class-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, .06);
+      line-height: 1;
+    }
+
+    .class-card-body {
+      padding: 0 28px 28px;
+    }
+
+    .class-mode {
+      font-size: .65rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .class-mode-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .class-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .class-desc {
+      font-size: .83rem;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, .5);
+      margin-bottom: 20px;
+    }
+
+    .class-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .class-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 20px;
+      background: rgba(201, 168, 76, .15);
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, .3);
+    }
+
+    .class-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: .9rem;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+
+    .class-card:hover .class-arrow {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      transform: translateX(3px);
+    }
+
+    .carousel-hint {
+      margin-top: 32px;
+      font-size: .75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .carousel-hint::before,
+    .carousel-hint::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: rgba(245, 240, 232, .15);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(245, 240, 232, .2);
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+
+    .carousel-dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
+    }
+
+    @media (max-width: 600px) {
+      .class-card {
+        flex: 0 0 260px;
+      }
+
+      .carousel-wrapper::before,
+      .carousel-wrapper::after {
+        width: 40px;
+      }
+
+      #classes .classes-header {
+        padding: 0 24px;
+      }
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      padding: 100px 48px;
+      background: #EDE8DF;
+    }
+
+    #gallery .section-title {
+      color: var(--navy);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .masonry {
+      columns: 4;
+      column-gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform .5s, filter .4s;
+      filter: saturate(.85);
+    }
+
+    .masonry-item:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.1);
+    }
+
+    .masonry-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 45, 90, .7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .35s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .masonry-item:hover .masonry-item-overlay {
+      opacity: 1;
+    }
+
+    .masonry-item-label {
+      color: #fff;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1rem;
+    }
+
+    /* ── MAP ── */
+    #presence {
+      padding: 100px 48px;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    #presence .section-title {
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    #presence .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 52px;
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .map-container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #0F1D3A;
+      border-radius: 6px;
+      box-shadow: 0 4px 40px rgba(30, 45, 90, .25), 0 0 0 1px rgba(201, 168, 76, .15);
+      overflow: hidden;
+    }
+
+    .map-legend {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    /* ── REVIEWS ── */
+    #reviews {
+      background: var(--navy);
+      padding: 100px 48px;
+      text-align: center;
+    }
+
+    #reviews .section-eyebrow {
+      color: var(--gold);
+    }
+
+    #reviews .section-title {
+      color: var(--cream);
+      margin-bottom: 52px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: rgba(245, 240, 232, .06);
+      border: 1px solid rgba(201, 168, 76, .15);
+      border-radius: 4px;
+      padding: 36px 32px;
+      text-align: left;
+      transition: border-color .3s;
+    }
+
+    .review-card:hover {
+      border-color: rgba(201, 168, 76, .5);
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(245, 240, 232, .85);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      color: var(--cream);
+      font-size: .9rem;
+    }
+
+    .reviewer-loc {
+      font-size: .75rem;
+      color: rgba(245, 240, 232, .5);
+      letter-spacing: .5px;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--gold);
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    #cta .section-title {
+      color: var(--navy);
+      margin-bottom: 16px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    #cta p {
+      color: rgba(30, 45, 90, .75);
+      margin-bottom: 36px;
+      font-size: 1.05rem;
+    }
+
+    #cta .cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      background: var(--navy);
+      color: var(--cream);
+      padding: 16px 40px;
+      border-radius: 2px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .88rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30, 45, 90, .3);
+    }
+
+    .btn-brochure-cta {
+      background: transparent;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: 14px 38px;
+      border-radius: 2px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .88rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s, color .2s;
+    }
+
+    .btn-brochure-cta:hover {
+      background: var(--navy);
+      color: var(--cream);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 60px 48px 32px;
+      color: rgba(245, 240, 232, .6);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .nav-logo {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-tagline {
+      font-size: .88rem;
+      line-height: 1.6;
+      max-width: 240px;
+    }
+
+    .footer-col h4 {
+      color: var(--gold);
+      font-size: .75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col a {
+      color: rgba(245, 240, 232, .55);
+      text-decoration: none;
+      font-size: .88rem;
+      transition: color .2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-contact {
+      font-size: .88rem;
+      line-height: 2;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 240, 232, .1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ── SHARED ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes expandLine {
+      from {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 14px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-text {
+        padding: 48px 28px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .masonry {
+        columns: 2;
+      }
+
+      #brochure-fab {
+        right: 16px;
+        bottom: 20px;
+        width: 64px;
+        height: 64px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ═══ NAV ═══ -->
-<nav id="navbar">
-  <span class="nav-logo">Adi <span>Fine Arts</span></span>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#classes">Classes</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#presence">Students</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" class="nav-brochure">⬇ Brochure</a></li>
-    <li><a href="#cta" class="nav-cta">Enroll Now</a></li>
-  </ul>
-</nav>
+  <!-- ═══ NAV ═══ -->
+  <nav id="navbar">
+    <span class="nav-logo">Adi <span>Fine Arts</span></span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#presence">Students</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" class="nav-brochure">⬇ Brochure</a>
+      </li>
+      <li><a href="#cta" class="nav-cta">Enroll Now</a></li>
+    </ul>
+  </nav>
 
-<!-- ═══ FLOATING BROCHURE BUTTON ═══ -->
-<a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" id="brochure-fab" title="Download Brochure">
-  <span class="fab-icon">📄</span>
-  <span class="fab-label">Download<br>Brochure</span>
-</a>
+  <!-- ═══ FLOATING BROCHURE BUTTON ═══ -->
+  <a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" id="brochure-fab"
+    title="Download Brochure">
+    <span class="fab-icon">📄</span>
+    <span class="fab-label">Download<br>Brochure</span>
+  </a>
 
-<!-- ═══ HERO ═══ -->
-<section id="hero">
-  <!-- Animated background -->
-  <div class="hero-bg"></div>
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <!-- Animated background -->
+    <div class="hero-bg"></div>
 
-  <!-- Light streak sweep -->
-  <div class="hero-streak"></div>
+    <!-- Light streak sweep -->
+    <div class="hero-streak"></div>
 
-  <!-- Floating particles -->
-  <div class="hero-particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
-  <!-- Corner accents -->
-  <div class="hero-corner hero-corner-tl"></div>
-  <div class="hero-corner hero-corner-br"></div>
-
-  <!-- Main content -->
-  <div class="hero-content">
-
-    <span class="hero-eyebrow">✦ Welcome to ✦</span>
-
-    <div class="hero-title-wrap">
-      <span class="hero-title-main">Adi Fine Arts</span>
-    </div>
-    <div class="hero-title-underline"></div>
-
-    <span class="hero-title-em">Where Every Stroke Tells Your Story</span>
-
-    <div class="brush-line"></div>
-
-    <div class="hero-badges">
-      <span class="hero-badge">🎨 Online Classes</span>
-      <span class="hero-badge">🖌️ Offline Studio</span>
-      <span class="hero-badge">✨ All Levels Welcome</span>
-      <span class="hero-badge">🌍 Students Worldwide</span>
+    <!-- Floating particles -->
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
 
-    <div class="hero-btns">
-      <a href="#classes" class="btn-primary">Explore Classes</a>
-      <a href="#gallery" class="btn-outline">View Student Gallery</a>
+    <!-- Corner accents -->
+    <div class="hero-corner hero-corner-tl"></div>
+    <div class="hero-corner hero-corner-br"></div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+
+      <span class="hero-eyebrow">✦ Welcome to ✦</span>
+
+      <div class="hero-title-wrap">
+        <span class="hero-title-main">Adi Fine Arts</span>
+      </div>
+      <div class="hero-title-underline"></div>
+
+      <span class="hero-title-em">Where Every Stroke Tells Your Story</span>
+
+      <div class="brush-line"></div>
+
+      <div class="hero-badges">
+        <span class="hero-badge">🎨 Online Classes</span>
+        <span class="hero-badge">🖌️ Offline Studio</span>
+        <span class="hero-badge">✨ All Levels Welcome</span>
+        <span class="hero-badge">🌍 Students Worldwide</span>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#classes" class="btn-primary">Explore Classes</a>
+        <a href="#gallery" class="btn-outline">View Student Gallery</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="hero-scroll">
-    <div class="scroll-mouse"></div>
-    Scroll
-  </div>
-</section>
-
-<!-- ═══ STATS STRIP ═══ -->
-<section id="tagline">
-  <div class="tag-item"><span class="tag-num">500+</span><span class="tag-label">Students Trained</span></div>
-  <div class="tag-sep"></div>
-  <div class="tag-item"><span class="tag-num">12+</span><span class="tag-label">Years Teaching</span></div>
-  <div class="tag-sep"></div>
-  <div class="tag-item"><span class="tag-num">8</span><span class="tag-label">Art Mediums</span></div>
-  <div class="tag-sep"></div>
-  <div class="tag-item"><span class="tag-num">4</span><span class="tag-label">States + International</span></div>
-</section>
-
-<!-- ═══ ABOUT ═══ -->
-<section id="about">
-  <div class="about-img">
-    <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=900&q=80" alt="Fine Arts Teacher">
-    <div class="about-img-frame"></div>
-  </div>
-  <div class="about-text reveal">
-    <span class="section-eyebrow">Meet Your Teacher</span>
-    <h2 class="section-title">Passionate About Art,<br>Dedicated to You</h2>
-    <p class="section-body">With over a decade of experience in fine arts education, I blend classical technique with expressive freedom. My studio, <strong>Adi Fine Arts</strong>, is a sanctuary where students discover their unique artistic voice — whether they're picking up a brush for the first time or refining advanced skills.</p>
-    <p class="section-body">I hold a Master's in Fine Arts and have exhibited across India. Teaching is not just my profession — it's my calling. Every student brings a world of possibility, and I'm here to help you unlock it.</p>
-    <div class="about-badges">
-      <span class="badge">🎨 MFA Graduate</span>
-      <span class="badge">🖌️ 12+ Years Teaching</span>
-      <span class="badge">🏛️ Exhibited Nationally</span>
-      <span class="badge">💻 Online &amp; Offline</span>
+    <!-- Scroll indicator -->
+    <div class="hero-scroll">
+      <div class="scroll-mouse"></div>
+      Scroll
     </div>
-    <a href="#cta" class="btn-primary" style="align-self:flex-start;">Start Learning Today</a>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ CLASSES ═══ -->
-<section id="classes">
-  <div class="classes-header reveal">
-    <span class="section-eyebrow">What We Offer</span>
-    <h2 class="section-title">Our Classes</h2>
-    <p class="section-sub">From foundational drawing to expressive oil painting — structured courses for all levels, delivered both in-studio and online.</p>
-  </div>
+  <!-- ═══ STATS STRIP ═══ -->
+  <section id="tagline">
+    <div class="tag-item"><span class="tag-num">500+</span><span class="tag-label">Students Trained</span></div>
+    <div class="tag-sep"></div>
+    <div class="tag-item"><span class="tag-num">12+</span><span class="tag-label">Years Teaching</span></div>
+    <div class="tag-sep"></div>
+    <div class="tag-item"><span class="tag-num">8</span><span class="tag-label">Art Mediums</span></div>
+    <div class="tag-sep"></div>
+    <div class="tag-item"><span class="tag-num">4</span><span class="tag-label">States + International</span></div>
+  </section>
 
-  <div class="carousel-wrapper">
-    <div class="carousel-track" id="carouselTrack">
-
-      <!-- Card 1 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#C9A84C,#e8c96a);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">✏️</div>
-          <span class="class-number">01</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#C9A84C;">
-            <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
-          </div>
-          <div class="class-name">Foundational Drawing</div>
-          <p class="class-desc">Lines, forms, shading, and perspective — the bedrock of every great artwork. Perfect for beginners wanting a solid restart.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">Beginner</span>
-            <div class="class-arrow">→</div>
-          </div>
-        </div>
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=900&q=80" alt="Fine Arts Teacher">
+      <div class="about-img-frame"></div>
+    </div>
+    <div class="about-text reveal">
+      <span class="section-eyebrow">Meet Your Teacher</span>
+      <h2 class="section-title">Passionate About Art,<br>Dedicated to You</h2>
+      <p class="section-body">With over a decade of experience in fine arts education, I blend classical technique with
+        expressive freedom. My studio, <strong>Adi Fine Arts</strong>, is a sanctuary where students discover their
+        unique artistic voice — whether they're picking up a brush for the first time or refining advanced skills.</p>
+      <p class="section-body">I hold a Master's in Fine Arts and have exhibited across India. Teaching is not just my
+        profession — it's my calling. Every student brings a world of possibility, and I'm here to help you unlock it.
+      </p>
+      <div class="about-badges">
+        <span class="badge">🎨 MFA Graduate</span>
+        <span class="badge">🖌️ 12+ Years Teaching</span>
+        <span class="badge">🏛️ Exhibited Nationally</span>
+        <span class="badge">💻 Online &amp; Offline</span>
       </div>
+      <a href="#cta" class="btn-primary" style="align-self:flex-start;">Start Learning Today</a>
+    </div>
+  </section>
 
-      <!-- Card 2 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#5B8DD9,#83AAEC);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">🎨</div>
-          <span class="class-number">02</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#83AAEC;">
-            <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
-          </div>
-          <div class="class-name">Watercolour Landscapes</div>
-          <p class="class-desc">Capture light, atmosphere, and nature with transparent watercolours. Learn wet-on-wet and layering techniques.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">Beginner–Inter.</span>
-            <div class="class-arrow">→</div>
-          </div>
-        </div>
-      </div>
+  <!-- ═══ CLASSES ═══ -->
+  <section id="classes">
+    <div class="classes-header reveal">
+      <span class="section-eyebrow">What We Offer</span>
+      <h2 class="section-title">Our Classes</h2>
+      <p class="section-sub">From foundational drawing to expressive oil painting — structured courses for all levels,
+        delivered both in-studio and online.</p>
+    </div>
 
-      <!-- Card 3 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#D4856A,#e8a98a);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">🖌️</div>
-          <span class="class-number">03</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#e8a98a;">
-            <span class="class-mode-dot" style="background:#f44336;"></span>Offline Studio Only
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- Card 1 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#C9A84C,#e8c96a);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">✏️</div>
+            <span class="class-number">01</span>
           </div>
-          <div class="class-name">Oil &amp; Acrylic Painting</div>
-          <p class="class-desc">Explore rich textures, blending and impasto techniques. Work on canvas with studio-grade materials.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">Inter.–Advanced</span>
-            <div class="class-arrow">→</div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#C9A84C;">
+              <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+            </div>
+            <div class="class-name">Foundational Drawing</div>
+            <p class="class-desc">Lines, forms, shading, and perspective — the bedrock of every great artwork. Perfect
+              for beginners wanting a solid restart.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">Beginner</span>
+              <div class="class-arrow">→</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Card 4 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#8A9E8C,#adc4af);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">🏺</div>
-          <span class="class-number">04</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#adc4af;">
-            <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+        <!-- Card 2 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#5B8DD9,#83AAEC);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🎨</div>
+            <span class="class-number">02</span>
           </div>
-          <div class="class-name">Portrait &amp; Figure Study</div>
-          <p class="class-desc">Master human anatomy, proportions, and capturing emotion from live models and reference photos.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">Intermediate</span>
-            <div class="class-arrow">→</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#9B72CF,#b99de0);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">🖊️</div>
-          <span class="class-number">05</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#b99de0;">
-            <span class="class-mode-dot" style="background:#2196F3;"></span>Online Only
-          </div>
-          <div class="class-name">Digital Illustration</div>
-          <p class="class-desc">Apply traditional art principles digitally. Create illustrations, concept art, and digital paintings from home.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">All Levels</span>
-            <div class="class-arrow">→</div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#83AAEC;">
+              <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+            </div>
+            <div class="class-name">Watercolour Landscapes</div>
+            <p class="class-desc">Capture light, atmosphere, and nature with transparent watercolours. Learn wet-on-wet
+              and layering techniques.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">Beginner–Inter.</span>
+              <div class="class-arrow">→</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Card 6 -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#E8B84B,#f0d080);"></div>
-        <div class="class-card-top">
-          <div class="class-icon-wrap">🧒</div>
-          <span class="class-number">06</span>
-        </div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#f0d080;">
-            <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+        <!-- Card 3 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#D4856A,#e8a98a);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🖌️</div>
+            <span class="class-number">03</span>
           </div>
-          <div class="class-name">Kids Creative Art</div>
-          <p class="class-desc">Fun classes for ages 6–14. Drawing, colouring, collage, and basic painting in a nurturing space.</p>
-          <div class="class-card-footer">
-            <span class="class-tag">Children</span>
-            <div class="class-arrow">→</div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#e8a98a;">
+              <span class="class-mode-dot" style="background:#f44336;"></span>Offline Studio Only
+            </div>
+            <div class="class-name">Oil &amp; Acrylic Painting</div>
+            <p class="class-desc">Explore rich textures, blending and impasto techniques. Work on canvas with
+              studio-grade materials.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">Inter.–Advanced</span>
+              <div class="class-arrow">→</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- ── DUPLICATE SET for seamless loop ── -->
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#C9A84C,#e8c96a);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">✏️</div><span class="class-number">01</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#C9A84C;"><span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline</div>
-          <div class="class-name">Foundational Drawing</div>
-          <p class="class-desc">Lines, forms, shading, and perspective — the bedrock of every great artwork. Perfect for beginners wanting a solid restart.</p>
-          <div class="class-card-footer"><span class="class-tag">Beginner</span><div class="class-arrow">→</div></div>
+        <!-- Card 4 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#8A9E8C,#adc4af);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🏺</div>
+            <span class="class-number">04</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#adc4af;">
+              <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+            </div>
+            <div class="class-name">Portrait &amp; Figure Study</div>
+            <p class="class-desc">Master human anatomy, proportions, and capturing emotion from live models and
+              reference photos.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">Intermediate</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#5B8DD9,#83AAEC);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">🎨</div><span class="class-number">02</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#83AAEC;"><span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline</div>
-          <div class="class-name">Watercolour Landscapes</div>
-          <p class="class-desc">Capture light, atmosphere, and nature with transparent watercolours. Learn wet-on-wet and layering techniques.</p>
-          <div class="class-card-footer"><span class="class-tag">Beginner–Inter.</span><div class="class-arrow">→</div></div>
-        </div>
-      </div>
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#D4856A,#e8a98a);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">🖌️</div><span class="class-number">03</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#e8a98a;"><span class="class-mode-dot" style="background:#f44336;"></span>Offline Studio Only</div>
-          <div class="class-name">Oil &amp; Acrylic Painting</div>
-          <p class="class-desc">Explore rich textures, blending and impasto techniques. Work on canvas with studio-grade materials.</p>
-          <div class="class-card-footer"><span class="class-tag">Inter.–Advanced</span><div class="class-arrow">→</div></div>
-        </div>
-      </div>
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#8A9E8C,#adc4af);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">🏺</div><span class="class-number">04</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#adc4af;"><span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline</div>
-          <div class="class-name">Portrait &amp; Figure Study</div>
-          <p class="class-desc">Master human anatomy, proportions, and capturing emotion from live models and reference photos.</p>
-          <div class="class-card-footer"><span class="class-tag">Intermediate</span><div class="class-arrow">→</div></div>
-        </div>
-      </div>
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#9B72CF,#b99de0);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">🖊️</div><span class="class-number">05</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#b99de0;"><span class="class-mode-dot" style="background:#2196F3;"></span>Online Only</div>
-          <div class="class-name">Digital Illustration</div>
-          <p class="class-desc">Apply traditional art principles digitally. Create illustrations, concept art, and digital paintings from home.</p>
-          <div class="class-card-footer"><span class="class-tag">All Levels</span><div class="class-arrow">→</div></div>
-        </div>
-      </div>
-      <div class="class-card">
-        <div class="class-card-stripe" style="background:linear-gradient(90deg,#E8B84B,#f0d080);"></div>
-        <div class="class-card-top"><div class="class-icon-wrap">🧒</div><span class="class-number">06</span></div>
-        <div class="class-card-body">
-          <div class="class-mode" style="color:#f0d080;"><span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline</div>
-          <div class="class-name">Kids Creative Art</div>
-          <p class="class-desc">Fun classes for ages 6–14. Drawing, colouring, collage, and basic painting in a nurturing space.</p>
-          <div class="class-card-footer"><span class="class-tag">Children</span><div class="class-arrow">→</div></div>
-        </div>
-      </div>
 
-    </div><!-- /carousel-track -->
-  </div><!-- /carousel-wrapper -->
+        <!-- Card 5 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#9B72CF,#b99de0);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🖊️</div>
+            <span class="class-number">05</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#b99de0;">
+              <span class="class-mode-dot" style="background:#2196F3;"></span>Online Only
+            </div>
+            <div class="class-name">Digital Illustration</div>
+            <p class="class-desc">Apply traditional art principles digitally. Create illustrations, concept art, and
+              digital paintings from home.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">All Levels</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
 
-  <div class="carousel-dots" id="carouselDots">
-    <div class="carousel-dot active"></div>
-    <div class="carousel-dot"></div>
-    <div class="carousel-dot"></div>
-    <div class="carousel-dot"></div>
-    <div class="carousel-dot"></div>
-    <div class="carousel-dot"></div>
-  </div>
-  <p class="carousel-hint">Hover to pause · Drag to explore</p>
+        <!-- Card 6 -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#E8B84B,#f0d080);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🧒</div>
+            <span class="class-number">06</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#f0d080;">
+              <span class="class-mode-dot" style="background:#4caf50;"></span>Online &amp; Offline
+            </div>
+            <div class="class-name">Kids Creative Art</div>
+            <p class="class-desc">Fun classes for ages 6–14. Drawing, colouring, collage, and basic painting in a
+              nurturing space.</p>
+            <div class="class-card-footer">
+              <span class="class-tag">Children</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
 
-</section>
+        <!-- ── DUPLICATE SET for seamless loop ── -->
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#C9A84C,#e8c96a);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">✏️</div><span class="class-number">01</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#C9A84C;"><span class="class-mode-dot"
+                style="background:#4caf50;"></span>Online &amp; Offline</div>
+            <div class="class-name">Foundational Drawing</div>
+            <p class="class-desc">Lines, forms, shading, and perspective — the bedrock of every great artwork. Perfect
+              for beginners wanting a solid restart.</p>
+            <div class="class-card-footer"><span class="class-tag">Beginner</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#5B8DD9,#83AAEC);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🎨</div><span class="class-number">02</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#83AAEC;"><span class="class-mode-dot"
+                style="background:#4caf50;"></span>Online &amp; Offline</div>
+            <div class="class-name">Watercolour Landscapes</div>
+            <p class="class-desc">Capture light, atmosphere, and nature with transparent watercolours. Learn wet-on-wet
+              and layering techniques.</p>
+            <div class="class-card-footer"><span class="class-tag">Beginner–Inter.</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#D4856A,#e8a98a);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🖌️</div><span class="class-number">03</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#e8a98a;"><span class="class-mode-dot"
+                style="background:#f44336;"></span>Offline Studio Only</div>
+            <div class="class-name">Oil &amp; Acrylic Painting</div>
+            <p class="class-desc">Explore rich textures, blending and impasto techniques. Work on canvas with
+              studio-grade materials.</p>
+            <div class="class-card-footer"><span class="class-tag">Inter.–Advanced</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#8A9E8C,#adc4af);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🏺</div><span class="class-number">04</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#adc4af;"><span class="class-mode-dot"
+                style="background:#4caf50;"></span>Online &amp; Offline</div>
+            <div class="class-name">Portrait &amp; Figure Study</div>
+            <p class="class-desc">Master human anatomy, proportions, and capturing emotion from live models and
+              reference photos.</p>
+            <div class="class-card-footer"><span class="class-tag">Intermediate</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#9B72CF,#b99de0);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🖊️</div><span class="class-number">05</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#b99de0;"><span class="class-mode-dot"
+                style="background:#2196F3;"></span>Online Only</div>
+            <div class="class-name">Digital Illustration</div>
+            <p class="class-desc">Apply traditional art principles digitally. Create illustrations, concept art, and
+              digital paintings from home.</p>
+            <div class="class-card-footer"><span class="class-tag">All Levels</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
+        <div class="class-card">
+          <div class="class-card-stripe" style="background:linear-gradient(90deg,#E8B84B,#f0d080);"></div>
+          <div class="class-card-top">
+            <div class="class-icon-wrap">🧒</div><span class="class-number">06</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-mode" style="color:#f0d080;"><span class="class-mode-dot"
+                style="background:#4caf50;"></span>Online &amp; Offline</div>
+            <div class="class-name">Kids Creative Art</div>
+            <p class="class-desc">Fun classes for ages 6–14. Drawing, colouring, collage, and basic painting in a
+              nurturing space.</p>
+            <div class="class-card-footer"><span class="class-tag">Children</span>
+              <div class="class-arrow">→</div>
+            </div>
+          </div>
+        </div>
 
-<!-- ═══ GALLERY ═══ -->
-<section id="gallery">
-  <div class="gallery-header reveal">
-    <span class="section-eyebrow">Student Artworks</span>
-    <h2 class="section-title">A Gallery of Growing Artists</h2>
-    <p style="color:var(--muted);max-width:520px;margin:.8rem auto 0;font-size:.95rem;line-height:1.7;">Every piece here was made by a student of Adi Fine Arts. Real talent, real growth, real stories.</p>
-  </div>
-  <div class="masonry">
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=600&q=80" alt="Abstract painting"><div class="masonry-item-overlay"><span class="masonry-item-label">Abstract Acrylics</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&q=80" alt="Watercolour"><div class="masonry-item-overlay"><span class="masonry-item-label">Watercolour Landscape</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600&q=80" alt="Portrait sketch"><div class="masonry-item-overlay"><span class="masonry-item-label">Portrait Drawing</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" alt="Oil painting"><div class="masonry-item-overlay"><span class="masonry-item-label">Oil on Canvas</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&q=80" alt="Charcoal"><div class="masonry-item-overlay"><span class="masonry-item-label">Charcoal Study</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="Mixed media"><div class="masonry-item-overlay"><span class="masonry-item-label">Mixed Media</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=80" alt="Floral painting"><div class="masonry-item-overlay"><span class="masonry-item-label">Botanical Watercolour</span></div></div>
-    <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=600&q=80" alt="Digital art"><div class="masonry-item-overlay"><span class="masonry-item-label">Digital Illustration</span></div></div>
-  </div>
-</section>
+      </div><!-- /carousel-track -->
+    </div><!-- /carousel-wrapper -->
 
-<!-- ═══ MAP ═══ -->
-<section id="presence">
-  <span class="section-eyebrow">Our Reach</span>
-  <h2 class="section-title">Students Across the Globe</h2>
-  <p class="section-sub">From Delhi &amp; Ghaziabad to Bangalore, Mumbai and Michigan — Adi Fine Arts students paint the world.</p>
-  <div class="map-container reveal">
-    <!--
+    <div class="carousel-dots" id="carouselDots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+    <p class="carousel-hint">Hover to pause · Drag to explore</p>
+
+  </section>
+
+  <!-- ═══ GALLERY ═══ -->
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <span class="section-eyebrow">Student Artworks</span>
+      <h2 class="section-title">A Gallery of Growing Artists</h2>
+      <p style="color:var(--muted);max-width:520px;margin:.8rem auto 0;font-size:.95rem;line-height:1.7;">Every piece
+        here was made by a student of Adi Fine Arts. Real talent, real growth, real stories.</p>
+    </div>
+    <div class="masonry">
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=600&q=80" alt="Abstract painting">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Abstract Acrylics</span></div>
+      </div>
+      <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=600&q=80"
+          alt="Watercolour">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Watercolour Landscape</span></div>
+      </div>
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=600&q=80" alt="Portrait sketch">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Portrait Drawing</span></div>
+      </div>
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" alt="Oil painting">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Oil on Canvas</span></div>
+      </div>
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&q=80" alt="Charcoal">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Charcoal Study</span></div>
+      </div>
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="Mixed media">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Mixed Media</span></div>
+      </div>
+      <div class="masonry-item reveal"><img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=80"
+          alt="Floral painting">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Botanical Watercolour</span></div>
+      </div>
+      <div class="masonry-item reveal"><img
+          src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=600&q=80" alt="Digital art">
+        <div class="masonry-item-overlay"><span class="masonry-item-label">Digital Illustration</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAP ═══ -->
+  <section id="presence">
+    <span class="section-eyebrow">Our Reach</span>
+    <h2 class="section-title">Students Across the Globe</h2>
+    <p class="section-sub">From Delhi &amp; Ghaziabad to Bangalore, Mumbai and Michigan — Adi Fine Arts students paint
+      the world.</p>
+    <div class="map-container reveal">
+      <!--
       India map coordinate system inside viewBox="0 0 960 600"
       India fits roughly in the RIGHT 55% of the canvas (x: 500–870, y: 40–540)
       Geographic bounds used: Lat 8°N–37°N → y: 530–40   Long 68°E–97.5°E → x: 500–870
@@ -914,37 +1991,44 @@
       Hyderabad  17.38°N 78.47°E  → x=634  y=298
       Michigan   42.33°N 83.05°W  → separate mini-panel, left side x=100 y=130
     -->
-    <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#0F1D3A;">
+      <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg"
+        style="width:100%;display:block;background:#0F1D3A;">
 
-      <!-- Ocean background gradient -->
-      <defs>
-        <radialGradient id="oceanGrad" cx="50%" cy="60%" r="70%">
-          <stop offset="0%" stop-color="#1a3a5c"/>
-          <stop offset="100%" stop-color="#0a1628"/>
-        </radialGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <filter id="softglow">
-          <feGaussianBlur stdDeviation="5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
+        <!-- Ocean background gradient -->
+        <defs>
+          <radialGradient id="oceanGrad" cx="50%" cy="60%" r="70%">
+            <stop offset="0%" stop-color="#1a3a5c" />
+            <stop offset="100%" stop-color="#0a1628" />
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="softglow">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
 
-      <rect width="960" height="600" fill="url(#oceanGrad)"/>
+        <rect width="960" height="600" fill="url(#oceanGrad)" />
 
-      <!-- Grid lines (lat/long feel) -->
-      <line x1="0" y1="150" x2="960" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="0" y1="300" x2="960" y2="300" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="0" y1="450" x2="960" y2="450" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="240" y1="0" x2="240" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="480" y1="0" x2="480" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <line x1="720" y1="0" x2="720" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        <!-- Grid lines (lat/long feel) -->
+        <line x1="0" y1="150" x2="960" y2="150" stroke="rgba(255,255,255,.04)" stroke-width="1" />
+        <line x1="0" y1="300" x2="960" y2="300" stroke="rgba(255,255,255,.04)" stroke-width="1" />
+        <line x1="0" y1="450" x2="960" y2="450" stroke="rgba(255,255,255,.04)" stroke-width="1" />
+        <line x1="240" y1="0" x2="240" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1" />
+        <line x1="480" y1="0" x2="480" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1" />
+        <line x1="720" y1="0" x2="720" y2="600" stroke="rgba(255,255,255,.04)" stroke-width="1" />
 
-      <!-- ═══ INDIA OUTLINE (detailed path) ═══ -->
-      <!-- Accurate simplified outline of India mapped to SVG coords -->
-      <path d="
+        <!-- ═══ INDIA OUTLINE (detailed path) ═══ -->
+        <!-- Accurate simplified outline of India mapped to SVG coords -->
+        <path d="
         M617,60
         L640,58 L665,62 L690,58 L710,65 L730,60 L755,68 L770,78
         L780,95 L785,115 L790,135 L795,155 L800,170 L798,185
@@ -962,445 +2046,523 @@
         L505,170 L508,155 L512,140 L515,125
         L518,110 L520,95 L522,80 L528,68
         L540,60 L555,56 L570,54 L585,56 L600,58 L617,60Z
-      " fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1.2"/>
+      " fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1.2" />
 
-      <!-- Sri Lanka hint -->
-      <ellipse cx="648" cy="492" rx="9" ry="14" fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1"/>
+        <!-- Sri Lanka hint -->
+        <ellipse cx="648" cy="492" rx="9" ry="14" fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1" />
 
-      <!-- India label -->
-      <text x="655" y="270" font-size="11" fill="rgba(255,255,255,.18)" font-family="Lato,sans-serif" font-weight="700" letter-spacing="4" text-anchor="middle">INDIA</text>
+        <!-- India label -->
+        <text x="655" y="270" font-size="11" fill="rgba(255,255,255,.18)" font-family="Lato,sans-serif"
+          font-weight="700" letter-spacing="4" text-anchor="middle">INDIA</text>
 
-      <!-- Bay of Bengal label -->
-      <text x="800" y="350" font-size="9" fill="rgba(100,160,220,.4)" font-family="Lato,sans-serif" letter-spacing="2" text-anchor="middle" transform="rotate(-30,800,350)">BAY OF BENGAL</text>
+        <!-- Bay of Bengal label -->
+        <text x="800" y="350" font-size="9" fill="rgba(100,160,220,.4)" font-family="Lato,sans-serif" letter-spacing="2"
+          text-anchor="middle" transform="rotate(-30,800,350)">BAY OF BENGAL</text>
 
-      <!-- Arabian Sea label -->
-      <text x="468" y="340" font-size="9" fill="rgba(100,160,220,.4)" font-family="Lato,sans-serif" letter-spacing="2" text-anchor="middle" transform="rotate(20,468,340)">ARABIAN SEA</text>
+        <!-- Arabian Sea label -->
+        <text x="468" y="340" font-size="9" fill="rgba(100,160,220,.4)" font-family="Lato,sans-serif" letter-spacing="2"
+          text-anchor="middle" transform="rotate(20,468,340)">ARABIAN SEA</text>
 
-      <!-- Indian Ocean label -->
-      <text x="620" y="555" font-size="10" fill="rgba(100,160,220,.35)" font-family="Lato,sans-serif" letter-spacing="3" text-anchor="middle">INDIAN OCEAN</text>
+        <!-- Indian Ocean label -->
+        <text x="620" y="555" font-size="10" fill="rgba(100,160,220,.35)" font-family="Lato,sans-serif"
+          letter-spacing="3" text-anchor="middle">INDIAN OCEAN</text>
 
-      <!-- ═══ MINI USA PANEL (left side) ═══ -->
-      <rect x="20" y="60" width="200" height="120" rx="6" fill="rgba(30,58,95,.7)" stroke="rgba(201,168,76,.25)" stroke-width="1"/>
-      <text x="120" y="78" font-size="8" fill="rgba(201,168,76,.8)" font-family="Lato,sans-serif" font-weight="700" letter-spacing="2" text-anchor="middle">UNITED STATES</text>
-      <!-- Rough USA shape inside panel -->
-      <path d="M35,110 L80,105 L120,108 L160,105 L195,112 L200,125 L195,138 L170,145 L130,148 L90,147 L55,143 L35,135 Z" fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1"/>
-      <!-- Michigan dot on mini USA -->
-      <circle cx="148" cy="118" r="5" fill="#C9A84C" opacity=".95" filter="url(#glow)"/>
-      <circle cx="148" cy="118" fill="none" stroke="#C9A84C" stroke-width="1.5">
-        <animate attributeName="r" values="6;15;6" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="148" cy="118" r="2.5" fill="#fff"/>
-      <text x="148" y="155" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Michigan</text>
+        <!-- ═══ MINI USA PANEL (left side) ═══ -->
+        <rect x="20" y="60" width="200" height="120" rx="6" fill="rgba(30,58,95,.7)" stroke="rgba(201,168,76,.25)"
+          stroke-width="1" />
+        <text x="120" y="78" font-size="8" fill="rgba(201,168,76,.8)" font-family="Lato,sans-serif" font-weight="700"
+          letter-spacing="2" text-anchor="middle">UNITED STATES</text>
+        <!-- Rough USA shape inside panel -->
+        <path
+          d="M35,110 L80,105 L120,108 L160,105 L195,112 L200,125 L195,138 L170,145 L130,148 L90,147 L55,143 L35,135 Z"
+          fill="#1E3A5F" stroke="#2E5A8A" stroke-width="1" />
+        <!-- Michigan dot on mini USA -->
+        <circle cx="148" cy="118" r="5" fill="#C9A84C" opacity=".95" filter="url(#glow)" />
+        <circle cx="148" cy="118" fill="none" stroke="#C9A84C" stroke-width="1.5">
+          <animate attributeName="r" values="6;15;6" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="148" cy="118" r="2.5" fill="#fff" />
+        <text x="148" y="155" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700"
+          text-anchor="middle">Michigan</text>
 
-      <!-- Connection arc from Michigan panel to India -->
-      <path d="M220,120 Q480,20 617,154" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="5,4" opacity=".3"/>
+        <!-- Connection arc from Michigan panel to India -->
+        <path d="M220,120 Q480,20 617,154" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="5,4"
+          opacity=".3" />
 
-      <!-- ════════════════════════════════
+        <!-- ════════════════════════════════
            CITY DOTS ON INDIA
            All use pulsing ring animation
            ════════════════════════════════ -->
 
-      <!-- Helper macro pattern: each city = filled circle + pulse ring + white core + label -->
+        <!-- Helper macro pattern: each city = filled circle + pulse ring + white core + label -->
 
-      <!-- 1. DELHI (28.67°N, 77.22°E) → x=617, y=154 -->
-      <g id="city-delhi">
-        <circle cx="617" cy="154" r="7" fill="#C9A84C" opacity=".95" filter="url(#glow)"/>
-        <circle cx="617" cy="154" fill="none" stroke="#C9A84C" stroke-width="2">
-          <animate attributeName="r" values="9;22;9" dur="2.6s" begin="0s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="2.6s" begin="0s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="617" cy="154" r="3" fill="#fff"/>
-        <!-- Label left -->
-        <rect x="570" y="143" width="42" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="591" y="154" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Delhi</text>
-      </g>
+        <!-- 1. DELHI (28.67°N, 77.22°E) → x=617, y=154 -->
+        <g id="city-delhi">
+          <circle cx="617" cy="154" r="7" fill="#C9A84C" opacity=".95" filter="url(#glow)" />
+          <circle cx="617" cy="154" fill="none" stroke="#C9A84C" stroke-width="2">
+            <animate attributeName="r" values="9;22;9" dur="2.6s" begin="0s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.6s" begin="0s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="617" cy="154" r="3" fill="#fff" />
+          <!-- Label left -->
+          <rect x="570" y="143" width="42" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="591" y="154" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Delhi</text>
+        </g>
 
-      <!-- 2. GHAZIABAD (28.67°N, 77.43°E) → x=620, y=148 — slightly NE of Delhi -->
-      <g id="city-ghaziabad">
-        <circle cx="632" cy="146" r="6" fill="#E8B84B" opacity=".9" filter="url(#glow)"/>
-        <circle cx="632" cy="146" fill="none" stroke="#E8B84B" stroke-width="1.8">
-          <animate attributeName="r" values="8;20;8" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0;.7" dur="2.8s" begin="0.3s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="632" cy="146" r="2.5" fill="#fff"/>
-        <!-- Label right -->
-        <rect x="637" y="139" width="54" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="664" y="150" font-size="8" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Ghaziabad</text>
-      </g>
+        <!-- 2. GHAZIABAD (28.67°N, 77.43°E) → x=620, y=148 — slightly NE of Delhi -->
+        <g id="city-ghaziabad">
+          <circle cx="632" cy="146" r="6" fill="#E8B84B" opacity=".9" filter="url(#glow)" />
+          <circle cx="632" cy="146" fill="none" stroke="#E8B84B" stroke-width="1.8">
+            <animate attributeName="r" values="8;20;8" dur="2.8s" begin="0.3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".7;0;.7" dur="2.8s" begin="0.3s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="632" cy="146" r="2.5" fill="#fff" />
+          <!-- Label right -->
+          <rect x="637" y="139" width="54" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="664" y="150" font-size="8" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Ghaziabad</text>
+        </g>
 
-      <!-- 3. LUCKNOW (26.85°N, 80.92°E) → x=662, y=184 -->
-      <g id="city-lucknow">
-        <circle cx="662" cy="184" r="7" fill="#C9A84C" opacity=".95" filter="url(#glow)"/>
-        <circle cx="662" cy="184" fill="none" stroke="#C9A84C" stroke-width="2">
-          <animate attributeName="r" values="9;22;9" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="662" cy="184" r="3" fill="#fff"/>
-        <rect x="666" y="177" width="48" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="690" y="188" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Lucknow</text>
-      </g>
+        <!-- 3. LUCKNOW (26.85°N, 80.92°E) → x=662, y=184 -->
+        <g id="city-lucknow">
+          <circle cx="662" cy="184" r="7" fill="#C9A84C" opacity=".95" filter="url(#glow)" />
+          <circle cx="662" cy="184" fill="none" stroke="#C9A84C" stroke-width="2">
+            <animate attributeName="r" values="9;22;9" dur="3s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="3s" begin="0.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="662" cy="184" r="3" fill="#fff" />
+          <rect x="666" y="177" width="48" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="690" y="188" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Lucknow</text>
+        </g>
 
-      <!-- 4. BHUBANESWAR (20.30°N, 85.82°E) → x=728, y=261 -->
-      <g id="city-bhubaneswar">
-        <circle cx="728" cy="261" r="7" fill="#8A9E8C" opacity=".95" filter="url(#glow)"/>
-        <circle cx="728" cy="261" fill="none" stroke="#8A9E8C" stroke-width="2">
-          <animate attributeName="r" values="9;22;9" dur="2.9s" begin="0.7s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="2.9s" begin="0.7s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="728" cy="261" r="3" fill="#fff"/>
-        <rect x="734" y="254" width="68" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="768" y="265" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Bhubaneswar</text>
-      </g>
+        <!-- 4. BHUBANESWAR (20.30°N, 85.82°E) → x=728, y=261 -->
+        <g id="city-bhubaneswar">
+          <circle cx="728" cy="261" r="7" fill="#8A9E8C" opacity=".95" filter="url(#glow)" />
+          <circle cx="728" cy="261" fill="none" stroke="#8A9E8C" stroke-width="2">
+            <animate attributeName="r" values="9;22;9" dur="2.9s" begin="0.7s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.9s" begin="0.7s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="728" cy="261" r="3" fill="#fff" />
+          <rect x="734" y="254" width="68" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="768" y="265" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Bhubaneswar</text>
+        </g>
 
-      <!-- 5. MUMBAI (18.97°N, 72.83°E) → x=558, y=278 -->
-      <g id="city-mumbai">
-        <circle cx="558" cy="278" r="8" fill="#5B8DD9" opacity=".95" filter="url(#glow)"/>
-        <circle cx="558" cy="278" fill="none" stroke="#5B8DD9" stroke-width="2">
-          <animate attributeName="r" values="10;24;10" dur="2.7s" begin="0.2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="2.7s" begin="0.2s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="558" cy="278" r="3.5" fill="#fff"/>
-        <rect x="506" y="271" width="46" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="529" y="282" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Mumbai</text>
-      </g>
+        <!-- 5. MUMBAI (18.97°N, 72.83°E) → x=558, y=278 -->
+        <g id="city-mumbai">
+          <circle cx="558" cy="278" r="8" fill="#5B8DD9" opacity=".95" filter="url(#glow)" />
+          <circle cx="558" cy="278" fill="none" stroke="#5B8DD9" stroke-width="2">
+            <animate attributeName="r" values="10;24;10" dur="2.7s" begin="0.2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.7s" begin="0.2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="558" cy="278" r="3.5" fill="#fff" />
+          <rect x="506" y="271" width="46" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="529" y="282" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Mumbai</text>
+        </g>
 
-      <!-- 6. PUNE (18.52°N, 73.86°E) → x=571, y=285 — close to Mumbai, offset label -->
-      <g id="city-pune">
-        <circle cx="568" cy="295" r="6.5" fill="#9B72CF" opacity=".9" filter="url(#glow)"/>
-        <circle cx="568" cy="295" fill="none" stroke="#9B72CF" stroke-width="1.8">
-          <animate attributeName="r" values="8;20;8" dur="3.1s" begin="0.9s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0;.7" dur="3.1s" begin="0.9s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="568" cy="295" r="2.5" fill="#fff"/>
-        <rect x="507" y="291" width="36" height="15" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="525" y="301" font-size="8" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Pune</text>
-      </g>
+        <!-- 6. PUNE (18.52°N, 73.86°E) → x=571, y=285 — close to Mumbai, offset label -->
+        <g id="city-pune">
+          <circle cx="568" cy="295" r="6.5" fill="#9B72CF" opacity=".9" filter="url(#glow)" />
+          <circle cx="568" cy="295" fill="none" stroke="#9B72CF" stroke-width="1.8">
+            <animate attributeName="r" values="8;20;8" dur="3.1s" begin="0.9s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".7;0;.7" dur="3.1s" begin="0.9s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="568" cy="295" r="2.5" fill="#fff" />
+          <rect x="507" y="291" width="36" height="15" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="525" y="301" font-size="8" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Pune</text>
+        </g>
 
-      <!-- 7. AHMEDABAD (23.03°N, 72.59°E) → x=554, y=229 -->
-      <g id="city-ahmedabad">
-        <circle cx="554" cy="229" r="7" fill="#1E2D5A" opacity=".95" filter="url(#glow)"/>
-        <circle cx="554" cy="229" fill="none" stroke="#6B8DD9" stroke-width="2">
-          <animate attributeName="r" values="9;22;9" dur="2.5s" begin="0.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="2.5s" begin="0.4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="554" cy="229" r="3" fill="#fff"/>
-        <rect x="492" y="222" width="58" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="521" y="233" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Ahmedabad</text>
-      </g>
+        <!-- 7. AHMEDABAD (23.03°N, 72.59°E) → x=554, y=229 -->
+        <g id="city-ahmedabad">
+          <circle cx="554" cy="229" r="7" fill="#1E2D5A" opacity=".95" filter="url(#glow)" />
+          <circle cx="554" cy="229" fill="none" stroke="#6B8DD9" stroke-width="2">
+            <animate attributeName="r" values="9;22;9" dur="2.5s" begin="0.4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.5s" begin="0.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="554" cy="229" r="3" fill="#fff" />
+          <rect x="492" y="222" width="58" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="521" y="233" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Ahmedabad</text>
+        </g>
 
-      <!-- 8. HYDERABAD (17.38°N, 78.47°E) → x=634, y=298 -->
-      <g id="city-hyderabad">
-        <circle cx="638" cy="308" r="7" fill="#D4856A" opacity=".95" filter="url(#glow)"/>
-        <circle cx="638" cy="308" fill="none" stroke="#D4856A" stroke-width="2">
-          <animate attributeName="r" values="9;22;9" dur="2.8s" begin="0.6s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="2.8s" begin="0.6s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="638" cy="308" r="3" fill="#fff"/>
-        <rect x="643" y="301" width="58" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="672" y="312" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Hyderabad</text>
-      </g>
+        <!-- 8. HYDERABAD (17.38°N, 78.47°E) → x=634, y=298 -->
+        <g id="city-hyderabad">
+          <circle cx="638" cy="308" r="7" fill="#D4856A" opacity=".95" filter="url(#glow)" />
+          <circle cx="638" cy="308" fill="none" stroke="#D4856A" stroke-width="2">
+            <animate attributeName="r" values="9;22;9" dur="2.8s" begin="0.6s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.8s" begin="0.6s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="638" cy="308" r="3" fill="#fff" />
+          <rect x="643" y="301" width="58" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="672" y="312" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Hyderabad</text>
+        </g>
 
-      <!-- 9. BANGALORE (12.97°N, 77.59°E) → x=624, y=353 -->
-      <g id="city-bangalore">
-        <circle cx="624" cy="360" r="7.5" fill="#E8B84B" opacity=".95" filter="url(#glow)"/>
-        <circle cx="624" cy="360" fill="none" stroke="#E8B84B" stroke-width="2">
-          <animate attributeName="r" values="10;24;10" dur="3.2s" begin="1s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".8;0;.8" dur="3.2s" begin="1s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="624" cy="360" r="3" fill="#fff"/>
-        <rect x="628" y="353" width="56" height="16" rx="3" fill="rgba(10,22,50,.75)"/>
-        <text x="656" y="364" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">Bangalore</text>
-      </g>
+        <!-- 9. BANGALORE (12.97°N, 77.59°E) → x=624, y=353 -->
+        <g id="city-bangalore">
+          <circle cx="624" cy="360" r="7.5" fill="#E8B84B" opacity=".95" filter="url(#glow)" />
+          <circle cx="624" cy="360" fill="none" stroke="#E8B84B" stroke-width="2">
+            <animate attributeName="r" values="10;24;10" dur="3.2s" begin="1s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values=".8;0;.8" dur="3.2s" begin="1s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="624" cy="360" r="3" fill="#fff" />
+          <rect x="628" y="353" width="56" height="16" rx="3" fill="rgba(10,22,50,.75)" />
+          <text x="656" y="364" font-size="8.5" fill="#F5F0E8" font-family="Lato,sans-serif" font-weight="700"
+            text-anchor="middle">Bangalore</text>
+        </g>
 
-      <!-- ═══ COMPASS ROSE ═══ -->
-      <g transform="translate(908,540)">
-        <circle r="22" fill="rgba(255,255,255,.06)" stroke="rgba(201,168,76,.3)" stroke-width="1"/>
-        <polygon points="0,-14 3,-6 0,-2 -3,-6" fill="#C9A84C"/>
-        <polygon points="0,14 3,6 0,2 -3,6" fill="rgba(255,255,255,.3)"/>
-        <polygon points="-14,0 -6,3 -2,0 -6,-3" fill="rgba(255,255,255,.3)"/>
-        <polygon points="14,0 6,3 2,0 6,-3" fill="rgba(255,255,255,.3)"/>
-        <circle r="3" fill="rgba(255,255,255,.6)"/>
-        <text y="-18" text-anchor="middle" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700">N</text>
-      </g>
+        <!-- ═══ COMPASS ROSE ═══ -->
+        <g transform="translate(908,540)">
+          <circle r="22" fill="rgba(255,255,255,.06)" stroke="rgba(201,168,76,.3)" stroke-width="1" />
+          <polygon points="0,-14 3,-6 0,-2 -3,-6" fill="#C9A84C" />
+          <polygon points="0,14 3,6 0,2 -3,6" fill="rgba(255,255,255,.3)" />
+          <polygon points="-14,0 -6,3 -2,0 -6,-3" fill="rgba(255,255,255,.3)" />
+          <polygon points="14,0 6,3 2,0 6,-3" fill="rgba(255,255,255,.3)" />
+          <circle r="3" fill="rgba(255,255,255,.6)" />
+          <text y="-18" text-anchor="middle" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif"
+            font-weight="700">N</text>
+        </g>
 
-      <!-- ═══ LEGEND BOX ═══ -->
-      <rect x="18" y="220" width="195" height="255" rx="6" fill="rgba(10,18,40,.82)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
-      <text x="115" y="240" font-size="8.5" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle" letter-spacing="1.5">STUDENT CITIES</text>
-      <line x1="28" y1="247" x2="203" y2="247" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+        <!-- ═══ LEGEND BOX ═══ -->
+        <rect x="18" y="220" width="195" height="255" rx="6" fill="rgba(10,18,40,.82)" stroke="rgba(201,168,76,.2)"
+          stroke-width="1" />
+        <text x="115" y="240" font-size="8.5" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700"
+          text-anchor="middle" letter-spacing="1.5">STUDENT CITIES</text>
+        <line x1="28" y1="247" x2="203" y2="247" stroke="rgba(201,168,76,.2)" stroke-width="1" />
 
-      <!-- Legend rows -->
-      <circle cx="36" cy="263" r="5" fill="#C9A84C"/>
-      <text x="48" y="267" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Delhi</text>
+        <!-- Legend rows -->
+        <circle cx="36" cy="263" r="5" fill="#C9A84C" />
+        <text x="48" y="267" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Delhi</text>
 
-      <circle cx="36" cy="282" r="4.5" fill="#E8B84B"/>
-      <text x="48" y="286" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Ghaziabad</text>
+        <circle cx="36" cy="282" r="4.5" fill="#E8B84B" />
+        <text x="48" y="286" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Ghaziabad</text>
 
-      <circle cx="36" cy="300" r="5" fill="#C9A84C"/>
-      <text x="48" y="304" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Lucknow</text>
+        <circle cx="36" cy="300" r="5" fill="#C9A84C" />
+        <text x="48" y="304" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Lucknow</text>
 
-      <circle cx="36" cy="318" r="5" fill="#8A9E8C"/>
-      <text x="48" y="322" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Bhubaneswar</text>
+        <circle cx="36" cy="318" r="5" fill="#8A9E8C" />
+        <text x="48" y="322" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Bhubaneswar</text>
 
-      <circle cx="36" cy="336" r="5.5" fill="#5B8DD9"/>
-      <text x="48" y="340" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Mumbai</text>
+        <circle cx="36" cy="336" r="5.5" fill="#5B8DD9" />
+        <text x="48" y="340" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Mumbai</text>
 
-      <circle cx="36" cy="354" r="4.5" fill="#9B72CF"/>
-      <text x="48" y="358" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Pune</text>
+        <circle cx="36" cy="354" r="4.5" fill="#9B72CF" />
+        <text x="48" y="358" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Pune</text>
 
-      <circle cx="36" cy="372" r="5" fill="#1E2D5A" stroke="#6B8DD9" stroke-width="1.5"/>
-      <text x="48" y="376" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Ahmedabad</text>
+        <circle cx="36" cy="372" r="5" fill="#1E2D5A" stroke="#6B8DD9" stroke-width="1.5" />
+        <text x="48" y="376" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Ahmedabad</text>
 
-      <circle cx="36" cy="390" r="5" fill="#D4856A"/>
-      <text x="48" y="394" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Hyderabad</text>
+        <circle cx="36" cy="390" r="5" fill="#D4856A" />
+        <text x="48" y="394" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Hyderabad</text>
 
-      <circle cx="36" cy="408" r="5.5" fill="#E8B84B"/>
-      <text x="48" y="412" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Bangalore</text>
+        <circle cx="36" cy="408" r="5.5" fill="#E8B84B" />
+        <text x="48" y="412" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Bangalore</text>
 
-      <line x1="28" y1="420" x2="203" y2="420" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
-      <circle cx="36" cy="436" r="5" fill="#C9A84C"/>
-      <text x="48" y="440" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Michigan, USA 🌐</text>
+        <line x1="28" y1="420" x2="203" y2="420" stroke="rgba(201,168,76,.2)" stroke-width="1" />
+        <circle cx="36" cy="436" r="5" fill="#C9A84C" />
+        <text x="48" y="440" font-size="8.5" fill="#D0C8BC" font-family="Lato,sans-serif">Michigan, USA 🌐</text>
 
-      <!-- Student count -->
-      <rect x="28" y="450" width="175" height="18" rx="3" fill="rgba(201,168,76,.1)" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
-      <text x="115" y="462" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700" text-anchor="middle">500+ Students Across 10 Cities</text>
+        <!-- Student count -->
+        <rect x="28" y="450" width="175" height="18" rx="3" fill="rgba(201,168,76,.1)" stroke="rgba(201,168,76,.2)"
+          stroke-width="1" />
+        <text x="115" y="462" font-size="8" fill="#C9A84C" font-family="Lato,sans-serif" font-weight="700"
+          text-anchor="middle">500+ Students Across 10 Cities</text>
 
-    </svg>
-  </div>
-
-  <div class="map-legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#C9A84C;"></div>Delhi &amp; Lucknow</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#E8B84B;"></div>Ghaziabad &amp; Bangalore</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#5B8DD9;"></div>Mumbai</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#9B72CF;"></div>Pune</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#D4856A;"></div>Hyderabad</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8A9E8C;"></div>Bhubaneswar</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#C9A84C; outline:2px solid #1E2D5A;"></div>Michigan, USA</div>
-  </div>
-</section>
-
-<!-- ═══ REVIEWS ═══ -->
-<section id="reviews">
-  <span class="section-eyebrow">What Students Say</span>
-  <h2 class="section-title">Voices From Our Community</h2>
-  <div class="reviews-grid">
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"I joined with zero art experience and within 3 months I was painting landscapes that hang on my living room wall. The teaching style is patient, structured, and deeply inspiring."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=47" alt="Priya Sharma"><div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-loc">📍 Lucknow, Uttar Pradesh</div></div></div>
+      </svg>
     </div>
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"The online classes are as engaging as being in person. I'm based in Michigan and I've never felt the distance. The feedback on my work is detailed and genuinely helpful."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=12" alt="Rahul Mehta"><div><div class="reviewer-name">Rahul Mehta</div><div class="reviewer-loc">📍 Michigan, USA</div></div></div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"My daughter has blossomed here. The kids' class is so well-structured — she looks forward to every session. Her confidence has grown along with her art."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=32" alt="Anita Das"><div><div class="reviewer-name">Anita Das</div><div class="reviewer-loc">📍 Bhubaneswar, Odisha</div></div></div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"The oil painting course completely changed how I see colour and light. Never thought I could achieve this level. Truly world-class guidance from a brilliant teacher."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=56" alt="Kiran Patel"><div><div class="reviewer-name">Kiran Patel</div><div class="reviewer-loc">📍 Ahmedabad, Gujarat</div></div></div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"I've tried many art classes online, but this is a different level. The curriculum is thoughtful, the community is warm, and the progress I've made in portrait drawing is remarkable."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=29" alt="Sneha Rao"><div><div class="reviewer-name">Sneha Rao</div><div class="reviewer-loc">📍 Varanasi, Uttar Pradesh</div></div></div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Started watercolours 6 months ago. Now I'm selling prints. Adi Fine Arts didn't just teach me technique — it taught me to believe in my art."</p>
-      <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=41" alt="Devyani Nair"><div><div class="reviewer-name">Devyani Nair</div><div class="reviewer-loc">📍 Surat, Gujarat</div></div></div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══ CTA ═══ -->
-<section id="cta">
-  <h2 class="section-title">Ready to Paint Your World?</h2>
-  <p>Join hundreds of students who've discovered their creative voice at Adi Fine Arts.<br>Online batches starting every month. Offline studio — Uttar Pradesh.</p>
-  <div class="cta-btns">
-    <a href="mailto:adifinearts@example.com" class="btn-dark">Enroll Now — Free Trial Class</a>
-    <a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" class="btn-brochure-cta">⬇ Download Brochure</a>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="nav-logo">Adi <span>Fine Arts</span></span>
-      <p class="footer-tagline">A studio where creativity meets craft. Teaching fine arts online and offline since 2012.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Classes</h4>
-      <ul>
-        <li><a href="#classes">Foundational Drawing</a></li>
-        <li><a href="#classes">Watercolour</a></li>
-        <li><a href="#classes">Oil &amp; Acrylic</a></li>
-        <li><a href="#classes">Portrait Study</a></li>
-        <li><a href="#classes">Digital Illustration</a></li>
-        <li><a href="#classes">Kids Creative Art</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Studio</h4>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#presence">Our Reach</a></li>
-        <li><a href="Adi_Fine_Arts_Brochure.pdf" download>Download Brochure</a></li>
-        <li><a href="#cta">Enroll</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <div class="footer-contact">
-        <div>📍 Uttar Pradesh, India</div>
-        <div>💻 Online — Worldwide</div>
-        <div>📧 adifinearts@example.com</div>
-        <div>📞 +91 98765 43210</div>
+    <div class="map-legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#C9A84C;"></div>Delhi &amp; Lucknow
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#E8B84B;"></div>Ghaziabad &amp; Bangalore
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#5B8DD9;"></div>Mumbai
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#9B72CF;"></div>Pune
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#D4856A;"></div>Hyderabad
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#8A9E8C;"></div>Bhubaneswar
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#C9A84C; outline:2px solid #1E2D5A;"></div>Michigan, USA
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Adi Fine Arts. All rights reserved.</span>
-    <span style="color:rgba(245,240,232,.35);">Crafted with ❤️ &amp; paint</span>
-  </div>
-</footer>
+  </section>
 
-<script>
-  // Navbar scroll shadow
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  });
+  <!-- ═══ REVIEWS ═══ -->
+  <section id="reviews">
+    <span class="section-eyebrow">What Students Say</span>
+    <h2 class="section-title">Voices From Our Community</h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I joined with zero art experience and within 3 months I was painting landscapes that
+          hang on my living room wall. The teaching style is patient, structured, and deeply inspiring."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=47" alt="Priya Sharma">
+          <div>
+            <div class="reviewer-name">Priya Sharma</div>
+            <div class="reviewer-loc">📍 Lucknow, Uttar Pradesh</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The online classes are as engaging as being in person. I'm based in Michigan and I've
+          never felt the distance. The feedback on my work is detailed and genuinely helpful."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=12" alt="Rahul Mehta">
+          <div>
+            <div class="reviewer-name">Rahul Mehta</div>
+            <div class="reviewer-loc">📍 Michigan, USA</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My daughter has blossomed here. The kids' class is so well-structured — she looks
+          forward to every session. Her confidence has grown along with her art."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=32" alt="Anita Das">
+          <div>
+            <div class="reviewer-name">Anita Das</div>
+            <div class="reviewer-loc">📍 Bhubaneswar, Odisha</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The oil painting course completely changed how I see colour and light. Never thought I
+          could achieve this level. Truly world-class guidance from a brilliant teacher."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=56" alt="Kiran Patel">
+          <div>
+            <div class="reviewer-name">Kiran Patel</div>
+            <div class="reviewer-loc">📍 Ahmedabad, Gujarat</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've tried many art classes online, but this is a different level. The curriculum is
+          thoughtful, the community is warm, and the progress I've made in portrait drawing is remarkable."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=29" alt="Sneha Rao">
+          <div>
+            <div class="reviewer-name">Sneha Rao</div>
+            <div class="reviewer-loc">📍 Varanasi, Uttar Pradesh</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Started watercolours 6 months ago. Now I'm selling prints. Adi Fine Arts didn't just
+          teach me technique — it taught me to believe in my art."</p>
+        <div class="reviewer"><img class="reviewer-avatar" src="https://i.pravatar.cc/80?img=41" alt="Devyani Nair">
+          <div>
+            <div class="reviewer-name">Devyani Nair</div>
+            <div class="reviewer-loc">📍 Surat, Gujarat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  <!-- ═══ CTA ═══ -->
+  <section id="cta">
+    <h2 class="section-title">Ready to Paint Your World?</h2>
+    <p>Join hundreds of students who've discovered their creative voice at Adi Fine Arts.<br>Online batches starting
+      every month. Offline studio — Uttar Pradesh.</p>
+    <div class="cta-btns">
+      <a href="mailto:adifinearts@example.com" class="btn-dark">Enroll Now — Free Trial Class</a>
+      <a href="Adi_Fine_Arts_Brochure.pdf" download="Adi_Fine_Arts_Brochure.pdf" class="btn-brochure-cta">⬇ Download
+        Brochure</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">Adi <span>Fine Arts</span></span>
+        <p class="footer-tagline">A studio where creativity meets craft. Teaching fine arts online and offline since
+          2012.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Classes</h4>
+        <ul>
+          <li><a href="#classes">Foundational Drawing</a></li>
+          <li><a href="#classes">Watercolour</a></li>
+          <li><a href="#classes">Oil &amp; Acrylic</a></li>
+          <li><a href="#classes">Portrait Study</a></li>
+          <li><a href="#classes">Digital Illustration</a></li>
+          <li><a href="#classes">Kids Creative Art</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#presence">Our Reach</a></li>
+          <li><a href="Adi_Fine_Arts_Brochure.pdf" download>Download Brochure</a></li>
+          <li><a href="#cta">Enroll</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <div>📍 Uttar Pradesh, India</div>
+          <div>💻 Online — Worldwide</div>
+          <div>📧 adifinearts@example.com</div>
+          <div>📞 +91 98765 43210</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Adi Fine Arts. All rights reserved.</span>
+      <span style="color:rgba(245,240,232,.35);">Crafted with ❤️ &amp; paint</span>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
 
-  // ── HERO MOUSE PARALLAX ──
-  const heroBg   = document.querySelector('.hero-bg');
-  const heroContent = document.querySelector('.hero-content');
-  const heroSection = document.getElementById('hero');
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
 
-  heroSection.addEventListener('mousemove', (e) => {
-    const rect = heroSection.getBoundingClientRect();
-    const cx = (e.clientX - rect.left) / rect.width  - 0.5;  // -0.5 to 0.5
-    const cy = (e.clientY - rect.top)  / rect.height - 0.5;
+    // ── HERO MOUSE PARALLAX ──
+    const heroBg = document.querySelector('.hero-bg');
+    const heroContent = document.querySelector('.hero-content');
+    const heroSection = document.getElementById('hero');
 
-    // Background drifts opposite to cursor (subtle)
-    heroBg.style.transform = `scale(1.10) translate(${cx * -18}px, ${cy * -12}px)`;
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const cx = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
+      const cy = (e.clientY - rect.top) / rect.height - 0.5;
 
-    // Content drifts with cursor (very subtle depth feel)
-    heroContent.style.transform = `translate(${cx * 8}px, ${cy * 5}px)`;
-  });
+      // Background drifts opposite to cursor (subtle)
+      heroBg.style.transform = `scale(1.10) translate(${cx * -18}px, ${cy * -12}px)`;
 
-  heroSection.addEventListener('mouseleave', () => {
-    heroBg.style.transform = '';
-    heroContent.style.transform = '';
-  });
+      // Content drifts with cursor (very subtle depth feel)
+      heroContent.style.transform = `translate(${cx * 8}px, ${cy * 5}px)`;
+    });
 
-  // ── TITLE GLITTER: periodic shimmer on main title ──
-  const titleMain = document.querySelector('.hero-title-main');
-  if (titleMain) {
-    setInterval(() => {
-      titleMain.style.transition = 'text-shadow .4s';
-      titleMain.style.textShadow = '0 0 40px rgba(201,168,76,.6), 0 0 80px rgba(201,168,76,.2)';
+    heroSection.addEventListener('mouseleave', () => {
+      heroBg.style.transform = '';
+      heroContent.style.transform = '';
+    });
+
+    // ── TITLE GLITTER: periodic shimmer on main title ──
+    const titleMain = document.querySelector('.hero-title-main');
+    if (titleMain) {
+      setInterval(() => {
+        titleMain.style.transition = 'text-shadow .4s';
+        titleMain.style.textShadow = '0 0 40px rgba(201,168,76,.6), 0 0 80px rgba(201,168,76,.2)';
+        setTimeout(() => {
+          titleMain.style.textShadow = '2px 2px 0 rgba(255,255,255,.15), 0 4px 32px rgba(255,255,255,.1)';
+        }, 600);
+      }, 4000);
+    }
+
+    // ── CLASSES CAROUSEL ──
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    let isDragging = false, startX = 0, scrollLeft = 0, dragOffset = 0;
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => track.classList.add('paused'));
+    track.addEventListener('mouseleave', () => {
+      if (!isDragging) track.classList.remove('paused');
+    });
+
+    // Mouse drag
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true; startX = e.pageX;
+      dragOffset = parseFloat(getComputedStyle(track).transform.split(',')[4] || 0);
+      track.classList.add('paused');
+      track.style.animation = 'none';
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.pageX - startX;
+      track.style.transform = `translateX(${dragOffset + dx}px)`;
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
       setTimeout(() => {
-        titleMain.style.textShadow = '2px 2px 0 rgba(255,255,255,.15), 0 4px 32px rgba(255,255,255,.1)';
-      }, 600);
-    }, 4000);
-  }
+        track.style.animation = '';
+        track.style.transform = '';
+        track.classList.remove('paused');
+      }, 1200);
+    });
 
-  // ── CLASSES CAROUSEL ──
-  const track = document.getElementById('carouselTrack');
-  const dots  = document.querySelectorAll('.carousel-dot');
-  let isDragging = false, startX = 0, scrollLeft = 0, dragOffset = 0;
+    // Touch support
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].pageX;
+      dragOffset = parseFloat(getComputedStyle(track).transform.split(',')[4] || 0);
+      track.style.animation = 'none';
+      track.classList.add('paused');
+    }, { passive: true });
+    track.addEventListener('touchmove', (e) => {
+      const dx = e.touches[0].pageX - startX;
+      track.style.transform = `translateX(${dragOffset + dx}px)`;
+    }, { passive: true });
+    track.addEventListener('touchend', () => {
+      setTimeout(() => {
+        track.style.animation = '';
+        track.style.transform = '';
+        track.classList.remove('paused');
+      }, 1200);
+    });
 
-  // Pause on hover
-  track.addEventListener('mouseenter', () => track.classList.add('paused'));
-  track.addEventListener('mouseleave', () => {
-    if (!isDragging) track.classList.remove('paused');
-  });
-
-  // Mouse drag
-  track.addEventListener('mousedown', (e) => {
-    isDragging = true; startX = e.pageX;
-    dragOffset = parseFloat(getComputedStyle(track).transform.split(',')[4] || 0);
-    track.classList.add('paused');
-    track.style.animation = 'none';
-  });
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const dx = e.pageX - startX;
-    track.style.transform = `translateX(${dragOffset + dx}px)`;
-  });
-  window.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    setTimeout(() => {
-      track.style.animation = '';
-      track.style.transform = '';
-      track.classList.remove('paused');
-    }, 1200);
-  });
-
-  // Touch support
-  track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].pageX;
-    dragOffset = parseFloat(getComputedStyle(track).transform.split(',')[4] || 0);
-    track.style.animation = 'none';
-    track.classList.add('paused');
-  }, { passive: true });
-  track.addEventListener('touchmove', (e) => {
-    const dx = e.touches[0].pageX - startX;
-    track.style.transform = `translateX(${dragOffset + dx}px)`;
-  }, { passive: true });
-  track.addEventListener('touchend', () => {
-    setTimeout(() => {
-      track.style.animation = '';
-      track.style.transform = '';
-      track.classList.remove('paused');
-    }, 1200);
-  });
-
-  // Dot indicator sync
-  let dotIndex = 0;
-  setInterval(() => {
-    dots.forEach(d => d.classList.remove('active'));
-    dotIndex = (dotIndex + 1) % dots.length;
-    dots[dotIndex].classList.add('active');
-  }, 28000 / 6);
-
-  // Dot click — highlight only (visual feedback)
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
+    // Dot indicator sync
+    let dotIndex = 0;
+    setInterval(() => {
       dots.forEach(d => d.classList.remove('active'));
-      dot.classList.add('active');
-      dotIndex = i;
-    });
-  });
+      dotIndex = (dotIndex + 1) % dots.length;
+      dots[dotIndex].classList.add('active');
+    }, 28000 / 6);
 
-  // ── HERO BADGE hover ripple ──
-  document.querySelectorAll('.hero-badge').forEach(badge => {
-    badge.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-3px) scale(1.05)';
-      this.style.transition = 'transform .2s, background .3s, border-color .3s';
+    // Dot click — highlight only (visual feedback)
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        dotIndex = i;
+      });
     });
-    badge.addEventListener('mouseleave', function() {
-      this.style.transform = '';
+
+    // ── HERO BADGE hover ripple ──
+    document.querySelectorAll('.hero-badge').forEach(badge => {
+      badge.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateY(-3px) scale(1.05)';
+        this.style.transition = 'transform .2s, background .3s, border-color .3s';
+      });
+      badge.addEventListener('mouseleave', function () {
+        this.style.transform = '';
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>
